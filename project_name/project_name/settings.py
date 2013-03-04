@@ -41,7 +41,7 @@ class Base(Settings):
     )
 
     ROOT_URLCONF = '{{ project_name }}.urls'
-    WSGI_APPLICATION = 'djangodefault.wsgi.application'
+    WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
     TEMPLATE_DIRS = [
         join(PROJECT_ROOT, 'templates')
     ]
