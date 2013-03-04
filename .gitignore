@@ -1,0 +1,26 @@
+# Python bytecode:
+*.py[co]
+
+# Packaging files:
+*.egg*
+
+# Editor temp files:
+*.swp
+*~
+
+# Sphinx docs:
+build
+
+# SQLite3 database files:
+*.db
+*.sqlite
+
+# Editor files
+.project
+.idea/*
+__MACOSX/*
+.ropeproject
+.coverage
+
+# Other
+.DS_Store

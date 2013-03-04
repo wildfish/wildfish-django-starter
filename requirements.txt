@@ -1,0 +1,10 @@
+ipython
+ipdb
+django
+django-configurations
+raven
+django-discover-runner
+django-webtest
+factory-boy
+django-jenkins
+django-debug-toolbar
