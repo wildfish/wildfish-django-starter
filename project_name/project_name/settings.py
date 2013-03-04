@@ -91,6 +91,7 @@ class Base(Settings):
     TEST_RUNNER = 'discover_runner.DiscoverRunner'
 
     DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
+    INTERNAL_IPS = ('127.0.0.1',)
 
 
 class Development(Base):
