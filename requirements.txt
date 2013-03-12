@@ -4,6 +4,7 @@ django
 django-configurations
 raven
 django-discover-runner
+webtest
 django-webtest
 factory-boy
 django-jenkins
