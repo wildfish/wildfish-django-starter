@@ -1,7 +1,7 @@
 Wildfish Django Starter
 =====================
 
-A baseline Djagno 1.5 project to begin development from.
+A Django 1.5 project template to begin development from.
 
 Quickstart
 ----------
