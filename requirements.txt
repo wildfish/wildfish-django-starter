@@ -1,6 +1,7 @@
 ipython
 ipdb
 django
+psycopg2
 django-configurations
 raven
 django-discover-runner
