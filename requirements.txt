@@ -1,11 +1,11 @@
 ipython
 ipdb
-django
+Django
 psycopg2
 django-configurations
 raven
 django-discover-runner
-webtest
+WebTest
 django-webtest
 factory-boy
 django-jenkins
