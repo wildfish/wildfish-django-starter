@@ -8,14 +8,15 @@ Quickstart
 
 Replace projectname with the name of your new project.
 
-Create a new virtualenv with our requirements - presumes use of virtualenvwrapper:
+Create a new virtualenv, and install our requirements - presumes use of virtualenvwrapper:
 
 .. code-block:: console
 
-    mkvirtualenv -r https://raw.github.com/wildfish/wildfish-django-starter/master/requirements.txt projectname
+    mkvirtualenv <projectname>
+    pip install -r https://raw.github.com/wildfish/wildfish-django-starter/master/requirements.txt
 
 Create your django project:
 
 .. code-block:: console
 
-    django-admin.py startproject --template=https://github.com/wildfish/wildfish-django-starter/archive/master.zip projectname
+    django-admin.py startproject --template=https://github.com/wildfish/wildfish-django-starter/archive/master.zip <waterbottle>
