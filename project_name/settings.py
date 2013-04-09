@@ -68,6 +68,7 @@ class Base(RedisCache, Settings):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'django.contrib.admin',
+        'discover_runner',
         'django_jenkins',
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
