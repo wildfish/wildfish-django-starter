@@ -50,6 +50,7 @@ class Base(RedisCache, Settings):
 
     SECRET_KEY = '{{ secret_key }}'
     MIDDLEWARE_CLASSES = Settings.MIDDLEWARE_CLASSES + (
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     )
 
