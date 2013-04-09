@@ -69,7 +69,7 @@ class Base(RedisCache, Settings):
         'django.contrib.staticfiles',
         'django.contrib.admin',
         'django_jenkins',
-        'raven.contrib.django',
+        'raven.contrib.django.raven_compat',
         'debug_toolbar',
     ]
 
@@ -111,9 +111,30 @@ class Base(RedisCache, Settings):
 class Development(Base):
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    EMAIL_FILE_PATH = '/tmp/app-emails'
 
 
-class Staging(Base):
+class Deployed(object):
+    """
+    Settings which are for a non local deployment, served behind nginx.
+    """
+    PUBLIC_ROOT = join(PROJECT_ROOT, '../public/')
+    STATIC_ROOT = join(PUBLIC_ROOT, 'static')
+    MEDIA_ROOT = join(PUBLIC_ROOT, 'media')
+    COMPRESS_OUTPUT_DIR = ''
+
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.sendgrid.net'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = ''
+    EMAIL_HOST_PASSWORD = ''
+    DEFAULT_FROM_EMAIL = ''
+    SERVER_EMAIL = ''
+
+
+class Staging(Deployed, Base):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -128,7 +149,9 @@ class Staging(Base):
     }
 
 
-class Production(Base):
+class Production(Deployed, Base):
+    DEBUG = False
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -141,3 +164,7 @@ class Production(Base):
             }
         }
     }
+
+    ALLOWED_HOSTS = ['', ]  # add deployment domain here
+
+    SENTRY_DSN = '<your sentry key>'  # add sentry DSN
