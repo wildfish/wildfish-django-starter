@@ -5,7 +5,20 @@ PROJECT_ROOT = dirname(dirname(abspath(__file__)))
 SITE_NAME = basename(PROJECT_ROOT)
 
 
-class Base(Settings):
+class RedisCache(object):
+    CACHES = {
+        'default': {
+            'BACKEND': 'redis_cache.RedisCache',
+            'LOCATION': '127.0.0.1:6379',
+            'OPTIONS': {
+                'DB': 1,
+                'PARSER_CLASS': 'redis.connection.HiredisParser'
+            },
+        },
+    }
+
+
+class Base(RedisCache, Settings):
     ADMINS = (
         # ('Your Name', 'your_email@example.com'),
     )

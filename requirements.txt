@@ -12,3 +12,5 @@ django-jenkins
 django-debug-toolbar
 django-model-utils
 django-crispy-forms
+django-redis-cache
+hiredis
