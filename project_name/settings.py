@@ -103,8 +103,22 @@ class Base(RedisCache, Settings):
         }
     }
 
+    # Other Django settings
     TEST_RUNNER = 'discover_runner.DiscoverRunner'
 
+    FIXTURE_DIRS = [
+        join(PROJECT_ROOT, 'fixtures')
+    ]
+    # App settings
+
+    # django-jenkins
+    PROJECT_APPS = [app for app in INSTALLED_APPS if app.startswith('{{ project_name }}.')]
+    JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
+                     'django_jenkins.tasks.django_tests',
+                     'django_jenkins.tasks.run_pep8',
+                     'django_jenkins.tasks.with_coverage')
+
+    # django-debug-toolbar
     DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
     INTERNAL_IPS = ('127.0.0.1',)
 
