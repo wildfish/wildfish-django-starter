@@ -1,5 +1,6 @@
 ipython
 ipdb
+pep8
 Django
 psycopg2
 django-configurations
