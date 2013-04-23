@@ -18,7 +18,7 @@ class RedisCache(object):
     }
 
 
-class Base(RedisCache, Settings):
+class Base(Settings):
     ADMINS = (
         # ('Your Name', 'your_email@example.com'),
     )
@@ -130,7 +130,7 @@ class Development(Base):
     EMAIL_FILE_PATH = '/tmp/app-emails'
 
 
-class Deployed(object):
+class Deployed(RedisCache):
     """
     Settings which are for a non local deployment, served behind nginx.
     """
