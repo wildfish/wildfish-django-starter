@@ -1,7 +1,19 @@
 Wildfish Django Starter
 =====================
 
-A Django 1.5 project template to begin development from.
+A Django 1.5 project template to kick start development for new projects.  Includes apps and settings useful for 9/10 projects.
+
+Features
+----------
+
+* 2 tier layout
+* Python essentials: ipython, ipdb, pep8
+* Settings using django-configurations
+* Testing bits: django-discover-runner, django-webtest, factory-boy, django-jenkins
+* Redis cache (via django-redis-cache)
+* Senty's raven client, django-debug-toolbar
+* django-crispy-form, django-model-utils
+
 
 Quickstart
 ----------
