@@ -1,8 +1,8 @@
-from os.path import abspath, basename, dirname, join
+from os.path import abspath, dirname, join
 from configurations import Settings
 
 PROJECT_ROOT = dirname(dirname(abspath(__file__)))
-SITE_NAME = basename(PROJECT_ROOT)
+PROJECT_NAME = '{{ project_name }}'
 
 
 class RedisCache(object):
@@ -130,7 +130,7 @@ class Development(Base):
     EMAIL_FILE_PATH = '/tmp/app-emails'
 
 
-class Deployed(RedisCache):
+class Deployed(RedisCache, Base):
     """
     Settings which are for a non local deployment, served behind nginx.
     """
@@ -149,7 +149,7 @@ class Deployed(RedisCache):
     SERVER_EMAIL = ''
 
 
-class Staging(Deployed, Base):
+class Staging(Deployed):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -164,7 +164,7 @@ class Staging(Deployed, Base):
     }
 
 
-class Production(Deployed, Base):
+class Production(Deployed):
     DEBUG = False
 
     DATABASES = {
