@@ -182,4 +182,6 @@ class Production(Deployed):
 
     ALLOWED_HOSTS = ['', ]  # add deployment domain here
 
-    SENTRY_DSN = '<your sentry key>'  # add sentry DSN
+    RAVEN_CONFIG = {
+        'dsn': ''  # add sentry DSN
+    }
