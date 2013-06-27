@@ -1,2 +1,17 @@
-{% block content %}
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" media="screen">
+        {% block extra_head %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        {% endblock content %}
+        <script src="{{ STATIC_URL }}js/global.js"></script>
+        {% block extra_script %}
+        {% endblock %}
+    </body>
+</html>
