@@ -1,5 +1,5 @@
 from os.path import abspath, dirname, join
-from configurations import Settings
+from configurations import Configuration, values
 
 PROJECT_ROOT = dirname(dirname(abspath(__file__)))
 PROJECT_NAME = '{{ project_name }}'
@@ -18,12 +18,54 @@ class RedisCache(object):
     }
 
 
-class Base(Settings):
+class Common(Configuration):
     ADMINS = (
         # ('Your Name', 'your_email@example.com'),
     )
 
     MANAGERS = ADMINS
+
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = '{{ secret_key }}'
+
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+
+    TEMPLATE_DEBUG = True
+    ALLOWED_HOSTS = []
+
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'discover_runner',
+        'django_jenkins',
+        'raven.contrib.django.raven_compat',
+        'debug_toolbar',
+    ]
+
+    MIDDLEWARE_CLASSES = [
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
+
+    ROOT_URLCONF = '{{ project_name }}.urls'
+
+    WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
+
+
+    # Database
+    # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
+    # http://django-configurations.readthedocs.org/en/latest/values/#configurations.values.DatabaseURLValue
 
     DATABASES = {
         'default': {
@@ -32,83 +74,44 @@ class Base(Settings):
         }
     }
 
-    ALLOWED_HOSTS = []
+    # Internationalization
+    # https://docs.djangoproject.com/en/{{ docs_version }}/topics/i18n/
+
+    LANGUAGE_CODE = 'en-GB'
 
     TIME_ZONE = 'Europe/London'
-    LANGUAGE_CODE = 'en-GB'
-    SITE_ID = 1
 
-    MEDIA_ROOT = join(PROJECT_ROOT, 'media')
-    MEDIA_URL = '/media/'
-    STATIC_ROOT = join(PROJECT_ROOT, 'static_root')
+    USE_I18N = True
+
+    USE_L10N = True
+
+    USE_TZ = True
+
+
+    # Static files (CSS, JavaScript, Images)
+    # https://docs.djangoproject.com/en/{{ docs_version }}/howto/static-files/
+
     STATIC_URL = '/static/'
+    STATIC_ROOT = join(PROJECT_ROOT, 'static_root')
+
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 
     # Additional locations of static files
     STATICFILES_DIRS = [
         join(PROJECT_ROOT, 'static')
     ]
 
-    SECRET_KEY = '{{ secret_key }}'
-    MIDDLEWARE_CLASSES = Settings.MIDDLEWARE_CLASSES + (
-        'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-    )
-
-    ROOT_URLCONF = '{{ project_name }}.urls'
-    WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
     TEMPLATE_DIRS = [
         join(PROJECT_ROOT, 'templates')
     ]
 
-    INSTALLED_APPS = [
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.sites',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-        'django.contrib.admin',
-        'discover_runner',
-        'django_jenkins',
-        'raven.contrib.django.raven_compat',
-        'debug_toolbar',
-    ]
-
-    # A sample logging configuration. The only tangible logging
-    # performed by this configuration is to send an email to
-    # the site admins on every HTTP 500 error when DEBUG=False.
-    # See http://docs.djangoproject.com/en/dev/topics/logging for
-    # more details on how to customize your logging configuration.
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'filters': {
-            'require_debug_false': {
-                '()': 'django.utils.log.RequireDebugFalse'
-            }
-        },
-        'handlers': {
-            'mail_admins': {
-                'level': 'ERROR',
-                'filters': ['require_debug_false'],
-                'class': 'django.utils.log.AdminEmailHandler'
-            }
-        },
-        'loggers': {
-            'django.request': {
-                'handlers': ['mail_admins'],
-                'level': 'ERROR',
-                'propagate': True,
-            },
-        }
-    }
-
-    # Other Django settings
     TEST_RUNNER = 'discover_runner.DiscoverRunner'
 
     FIXTURE_DIRS = [
         join(PROJECT_ROOT, 'fixtures')
     ]
+
     # App settings
 
     # django-jenkins
@@ -123,14 +126,14 @@ class Base(Settings):
     INTERNAL_IPS = ('127.0.0.1',)
 
 
-class Development(Base):
+class Dev(Common):
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = '/tmp/app-emails'
 
 
-class Deployed(RedisCache, Base):
+class Deployed(RedisCache, Common):
     """
     Settings which are for a non local deployment, served behind nginx.
     """
@@ -149,7 +152,7 @@ class Deployed(RedisCache, Base):
     SERVER_EMAIL = ''
 
 
-class Staging(Deployed):
+class Stage(Deployed):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -164,8 +167,9 @@ class Staging(Deployed):
     }
 
 
-class Production(Deployed):
+class Prod(Deployed):
     DEBUG = False
+    TEMPLATE_DEBUG = DEBUG
 
     DATABASES = {
         'default': {
