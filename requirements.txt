@@ -14,3 +14,4 @@ django-debug-toolbar
 django-model-utils
 django-redis-cache
 hiredis
+django-floppyforms

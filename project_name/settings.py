@@ -46,6 +46,7 @@ class Common(Configuration):
         'django_jenkins',
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
+        'floppyforms',
     ]
 
     MIDDLEWARE_CLASSES = [
