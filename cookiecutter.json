@@ -1,0 +1,7 @@
+{
+    "project_name": "newproject",
+    "author_name": "Rolo",
+    "email": "rolo@wildfish.com",
+    "domain_name": "wildfish.com",
+    "secret_key": "Change me to a random string!"
+}
