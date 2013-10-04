@@ -1,5 +1,5 @@
 from os.path import abspath, dirname, join
-from configurations import Configuration, values
+from configurations import Configuration
 
 PROJECT_ROOT = dirname(dirname(abspath(__file__)))
 PROJECT_NAME = '{{cookiecutter.project_name}}'
@@ -20,20 +20,19 @@ class RedisCache(object):
 
 class Common(Configuration):
     ADMINS = (
-        # ('Your Name', 'your_email@example.com'),
+        ('{{cookiecutter.author_name}}', '{{cookiecutter.author_email}}'),
     )
 
     MANAGERS = ADMINS
 
     # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = '{{ secret_key }}'
+    SECRET_KEY = '{{cookiecutter.secret_key}}'
 
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
     TEMPLATE_DEBUG = True
     ALLOWED_HOSTS = []
-
 
     INSTALLED_APPS = [
         'django.contrib.admin',
@@ -63,7 +62,6 @@ class Common(Configuration):
 
     WSGI_APPLICATION = '{{cookiecutter.project_name}}.wsgi.application'
 
-
     # Database
     # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
     # http://django-configurations.readthedocs.org/en/latest/values/#configurations.values.DatabaseURLValue
@@ -80,14 +78,13 @@ class Common(Configuration):
 
     LANGUAGE_CODE = 'en-GB'
 
-    TIME_ZONE = 'Europe/London'
+    TIME_ZONE = '{{cookiecutter.time_zone}}'
 
     USE_I18N = True
 
     USE_L10N = True
 
     USE_TZ = True
-
 
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/{{ docs_version }}/howto/static-files/
@@ -147,8 +144,8 @@ class Deployed(RedisCache, Common):
     EMAIL_HOST = 'smtp.sendgrid.net'
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = ''
-    EMAIL_HOST_PASSWORD = ''
+    EMAIL_HOST_USER = '{{cookiecutter.email_user}}'
+    EMAIL_HOST_PASSWORD = '{{cookiecutter.email_password}}'
     DEFAULT_FROM_EMAIL = ''
     SERVER_EMAIL = ''
 
@@ -185,8 +182,8 @@ class Prod(Deployed):
         }
     }
 
-    ALLOWED_HOSTS = ['', ]  # add deployment domain here
+    ALLOWED_HOSTS = ['{{cookiecutter.domain_name}}', ]  # add deployment domain here
 
     RAVEN_CONFIG = {
-        'dsn': ''  # add sentry DSN
+        'dsn': '{{cookiecutter.sentry_dsn}}'
     }
