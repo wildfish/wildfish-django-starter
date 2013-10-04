@@ -1,6 +1,6 @@
 ipython
 ipdb
-pep8
+flake8
 Django
 psycopg2
 django-configurations
