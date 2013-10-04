@@ -1,6 +1,0 @@
-x Add default top level fixture dir.
-x Add redis cache.
-- Ensure README not copied, or initialised with a blank one with project name as title.
-x Add empty directories (static, fixtures)
-x Add fixture_dirs settings.
-x Add jenkins config
