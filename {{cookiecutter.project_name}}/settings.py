@@ -2,7 +2,7 @@ from os.path import abspath, dirname, join
 from configurations import Configuration, values
 
 PROJECT_ROOT = dirname(dirname(abspath(__file__)))
-PROJECT_NAME = '{{ project_name }}'
+PROJECT_NAME = '{{cookiecutter.project_name}}'
 
 
 class RedisCache(object):
@@ -59,9 +59,9 @@ class Common(Configuration):
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]
 
-    ROOT_URLCONF = '{{ project_name }}.urls'
+    ROOT_URLCONF = '{{cookiecutter.project_name}}.urls'
 
-    WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
+    WSGI_APPLICATION = '{{cookiecutter.project_name}}.wsgi.application'
 
 
     # Database
@@ -116,7 +116,7 @@ class Common(Configuration):
     # App settings
 
     # django-jenkins
-    PROJECT_APPS = [app for app in INSTALLED_APPS if app.startswith('{{ project_name }}.')]
+    PROJECT_APPS = [app for app in INSTALLED_APPS if app.startswith('{{cookiecutter.project_name}}.')]
     JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
                      'django_jenkins.tasks.django_tests',
                      'django_jenkins.tasks.run_pep8',
