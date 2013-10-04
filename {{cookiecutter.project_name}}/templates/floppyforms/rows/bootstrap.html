@@ -1,4 +1,4 @@
-{% load floppyforms %}{% block row %}{% for field in fields %}
+{% raw %}{% load floppyforms %}{% block row %}{% for field in fields %}
 <div class="control-group{% if field.errors %} error{% endif %}">
     {% with classes=field.css_classes label=label|default:field.label help_text=help_text|default:field.help_text %}
     {% block label %}{% if field|id %}<label class="control-label" for="{{ field|id }}">{% endif %}{{ label }}{% if field.field.required %} <span class="required">*</span>{% endif %}{% if label|last not in ".:!?" %}:{% endif %}{% if field|id %}</label>{% endif %}{% endblock %}
@@ -15,3 +15,4 @@
     {% endwith %}
 </div><!--- .control-group{% if field.errors %}.error{% endif %} -->
 {% endfor %}{% endblock %}
+{% endraw %}
