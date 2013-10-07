@@ -1,7 +1,7 @@
 {
     "project_name": "newproject",
-    "author_name": "Rolo",
-    "author_email": "rolo@wildfish.com",
+    "author_name": "Your name",
+    "author_email": "you@somewhere.com",
     "domain_name": "wildfish.com",
     "secret_key": "Change me to a random string!", 
     "time_zone": "Europe/London",
