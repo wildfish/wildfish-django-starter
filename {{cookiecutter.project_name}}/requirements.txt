@@ -7,7 +7,7 @@ django-configurations
 raven
 WebTest
 django-webtest
-factory-boy
+model-mommy
 django-jenkins
 django-debug-toolbar
 django-model-utils
