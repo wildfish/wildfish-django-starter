@@ -1,7 +1,7 @@
 Wildfish Django Starter
 =====================
 
-A Django 1.5 project template to kick start development for new projects.  Includes apps and settings useful for 9/10 projects.
+A Django 1.6 project template to kick start development for new projects.  Includes apps and settings useful for 9/10 projects.
 
 Features
 ----------
