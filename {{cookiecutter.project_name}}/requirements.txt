@@ -5,7 +5,6 @@ Django
 psycopg2
 django-configurations
 raven
-django-discover-runner
 WebTest
 django-webtest
 factory-boy

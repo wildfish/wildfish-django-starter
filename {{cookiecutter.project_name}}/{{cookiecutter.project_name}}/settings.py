@@ -41,7 +41,6 @@ class Common(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-        'discover_runner',
         'django_jenkins',
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
@@ -103,8 +102,6 @@ class Common(Configuration):
     TEMPLATE_DIRS = [
         join(PROJECT_ROOT, 'templates')
     ]
-
-    TEST_RUNNER = 'discover_runner.DiscoverRunner'
 
     FIXTURE_DIRS = [
         join(PROJECT_ROOT, 'fixtures')
