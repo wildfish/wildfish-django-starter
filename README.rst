@@ -1,7 +1,7 @@
 Wildfish Django Starter
 =====================
 
-A Django 1.6 project template to kick start development for new projects.  Includes apps and settings useful for 9/10 projects.
+A Django 1.6 project cookiecutter template to kick start development for new projects.  Includes apps and settings useful for 9/10 projects.
 
 Features
 ----------
@@ -18,17 +18,6 @@ Features
 Quickstart
 ----------
 
-Replace projectname with the name of your new project.
+Ensure you have cookiecutter installed, and then:
 
-Create a new virtualenv, and install our requirements - presumes use of virtualenvwrapper:
-
-.. code-block:: console
-
-    mkvirtualenv <projectname>
-    pip install -r https://raw.github.com/wildfish/wildfish-django-starter/master/requirements.txt
-
-Create your django project:
-
-.. code-block:: console
-
-    django-admin.py startproject --template=https://github.com/wildfish/wildfish-django-starter/archive/master.zip <projectname>
+    cookiecutter git@github.com:wildfish/wildfish-django-starter.git
