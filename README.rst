@@ -7,7 +7,7 @@ Features
 ----------
 
 * 2 tier layout
-* Python essentials: ipython, ipdb, pep8
+* Python essentials: ipython, ipdb, flake8
 * Settings using django-configurations
 * Testing bits: django-webtest, model-mommy, django-jenkins
 * Redis cache (via django-redis-cache)
