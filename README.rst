@@ -12,7 +12,7 @@ Features
 * Testing bits: django-webtest, model-mommy, django-jenkins
 * Redis cache (via django-redis-cache)
 * Senty's raven client, django-debug-toolbar
-* django-crispy-form, django-model-utils
+* django-floppyforms, django-model-utils
 
 
 Quickstart
