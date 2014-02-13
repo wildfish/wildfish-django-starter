@@ -132,6 +132,10 @@ class Deployed(RedisCache, Common):
     """
     Settings which are for a non local deployment, served behind nginx.
     """
+    # django-debug-toolbar will throw an ImproperlyConfigured exception if DEBUG is
+    # ever turned on when run with a WSGI server
+    DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
     PUBLIC_ROOT = join(PROJECT_ROOT, '../public/')
     STATIC_ROOT = join(PUBLIC_ROOT, 'static')
     MEDIA_ROOT = join(PUBLIC_ROOT, 'media')
