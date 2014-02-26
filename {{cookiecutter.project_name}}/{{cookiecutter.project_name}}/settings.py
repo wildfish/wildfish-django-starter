@@ -112,8 +112,7 @@ class Common(Configuration):
     # django-jenkins
     PROJECT_APPS = [app for app in INSTALLED_APPS if app.startswith('{{cookiecutter.project_name}}.')]
     JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
-                     'django_jenkins.tasks.django_tests',
-                     'django_jenkins.tasks.run_pep8',
+                     'django_jenkins.tasks.run_flake8',
                      'django_jenkins.tasks.with_coverage')
 
     # django-debug-toolbar
