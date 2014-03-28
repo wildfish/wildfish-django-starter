@@ -14,3 +14,4 @@ django-model-utils
 django-redis-cache
 hiredis
 django-floppyforms
+django-vanilla-views
