@@ -8,7 +8,6 @@ raven
 WebTest
 django-webtest
 model-mommy
-django-jenkins
 django-debug-toolbar
 django-model-utils
 django-redis-cache

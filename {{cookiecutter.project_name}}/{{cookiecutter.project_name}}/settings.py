@@ -41,7 +41,6 @@ class Common(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-        'django_jenkins',
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
         'floppyforms',
@@ -109,11 +108,7 @@ class Common(Configuration):
 
     # App settings
 
-    # django-jenkins
-    PROJECT_APPS = [app for app in INSTALLED_APPS if app.startswith('{{cookiecutter.project_name}}.')]
-    JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
-                     'django_jenkins.tasks.run_flake8',
-                     'django_jenkins.tasks.with_coverage')
+    # App settings
 
     # django-debug-toolbar
     DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}

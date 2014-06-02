@@ -9,7 +9,7 @@ Features
 * 2 tier layout
 * Python essentials: ipython, ipdb, flake8
 * Settings using django-configurations
-* Testing bits: django-webtest, model-mommy, django-jenkins
+* Testing bits: django-webtest, model-mommy
 * Redis cache (via django-redis-cache)
 * Senty's raven client, django-debug-toolbar
 * django-floppyforms, django-model-utils
