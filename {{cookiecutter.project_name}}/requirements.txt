@@ -15,3 +15,4 @@ hiredis
 django-floppyforms
 django-vanilla-views
 django-extensions
+django-clear-cache

@@ -45,6 +45,7 @@ class Common(Configuration):
         'debug_toolbar',
         'floppyforms',
         'django_extensions',
+        'clear_cache',
     ]
 
     MIDDLEWARE_CLASSES = [
