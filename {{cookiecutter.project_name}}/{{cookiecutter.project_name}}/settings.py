@@ -97,7 +97,8 @@ class Common(Configuration):
 
     # Additional locations of static files
     STATICFILES_DIRS = [
-        join(PROJECT_ROOT, 'static')
+        join(PROJECT_ROOT, 'static'),
+        join(PROJECT_ROOT, 'bower_components'),
     ]
 
     TEMPLATE_DIRS = [
