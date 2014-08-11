@@ -1,20 +1,20 @@
 {% raw %}{% extends "base.html" %}
 
 {% block content %}
-    <h1>Listing</h1>
-    <a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_create' %}">Create</a>
-    <ul>
-        {% for object in object_list %}
-            <li>
-                {{ object }}
-                <a href="{{ object.get_absolute_url }}">Details</a>
-                <a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_update' object.pk %}">Update</a>
-                <a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_delete' object.pk %}">Delete</a>
-            </li>
-        {% empty %}
-                <p>No items.</p>
-        {% endfor %}
-    </ul>
+    <table class="table">
+    {% for object in object_list %}
+    <tr>
+        <td>{{ object }}</td>
+        <td><a href="{{ object.get_absolute_url }}">Details</a></td>
+        <td><a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_update' object.pk %}">Update</a></td>
+        <td><a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_delete' object.pk %}">Delete</a></td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td><p>No items.</p></td>
+    </tr>
+    {% endfor %}
+    </table>
 
     {% if is_paginated %}
         <div class="pagination">
