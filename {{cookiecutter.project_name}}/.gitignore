@@ -24,3 +24,5 @@ __MACOSX/*
 
 # Other
 .DS_Store
+bower_components/
+static_root/
