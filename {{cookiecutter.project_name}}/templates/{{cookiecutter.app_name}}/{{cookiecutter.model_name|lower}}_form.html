@@ -2,8 +2,9 @@
 
 {% load floppyforms %}
 
+{% block heading %}Create / Update{% endblock %}
+
 {% block content %}
-    <h1>Create/Update</h1>
     <form id="{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_form" method="post" action=".">
     {% csrf_token %}
     {% form form %}

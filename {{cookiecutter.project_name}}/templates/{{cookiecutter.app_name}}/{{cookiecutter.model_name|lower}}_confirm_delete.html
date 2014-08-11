@@ -1,7 +1,8 @@
 {% raw %}{% extends "base.html" %}
 
+{% block heading %}Delete{% endblock %}
+
 {% block content %}
-    <h1>Delete</h1>
     <p>Are you sure you want to delete?</p>
 
     <form id="{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_form" method="post" action=".">
