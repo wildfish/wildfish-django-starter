@@ -7,7 +7,7 @@ class {{ cookiecutter.model_name }}(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
-        return '{{ cookiecutter.model_name }} ({})'.format(self.id or 'Unsaved')
+        return self.name
 
     def get_absolute_url(self):
         return reverse('{{ cookiecutter.model_name|lower }}_detail', args=[str(self.id)])
