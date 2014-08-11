@@ -23,6 +23,17 @@
     </head>
     <body>
         <div class="container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_list' %}">List</a>
+                </li>
+                <li>
+                    <a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_create' %}">Create</a>
+                </li>
+            </ul>
             {% block content %}
             {% endblock %}
         </div>

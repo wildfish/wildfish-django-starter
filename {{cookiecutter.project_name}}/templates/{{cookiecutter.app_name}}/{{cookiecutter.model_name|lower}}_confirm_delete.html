@@ -1,0 +1,12 @@
+{% raw %}{% extends "base.html" %}
+
+{% block content %}
+    <h1>Delete</h1>
+    <p>Are you sure you want to delete?</p>
+
+    <form id="{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_form" method="post" action=".">
+    {% csrf_token %}
+    <input type="submit" value="Yes" class="btn btn-primary" /> <a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_list' %}" class="btn btn-danger">No</a>
+    </form>
+{% endblock %}
+{% endraw %}
