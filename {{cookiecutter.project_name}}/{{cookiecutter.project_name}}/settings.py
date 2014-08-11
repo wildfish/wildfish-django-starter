@@ -1,7 +1,7 @@
-from os.path import abspath, dirname, join
+from os.path import dirname, join
 from configurations import Configuration
 
-PROJECT_ROOT = dirname(dirname(abspath(__file__)))
+BASE_DIR = dirname(dirname(__file__))
 PROJECT_NAME = '{{cookiecutter.project_name}}'
 
 
@@ -91,23 +91,23 @@ class Common(Configuration):
     # https://docs.djangoproject.com/en/{{ docs_version }}/howto/static-files/
 
     STATIC_URL = '/static/'
-    STATIC_ROOT = join(PROJECT_ROOT, 'static_root')
+    STATIC_ROOT = join(BASE_DIR, 'static_root')
 
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = join(PROJECT_ROOT, 'media')
+    MEDIA_ROOT = join(BASE_DIR, 'media')
 
     # Additional locations of static files
     STATICFILES_DIRS = [
-        join(PROJECT_ROOT, 'static'),
-        join(PROJECT_ROOT, 'bower_components'),
+        join(BASE_DIR, 'static'),
+        join(BASE_DIR, 'bower_components'),
     ]
 
     TEMPLATE_DIRS = [
-        join(PROJECT_ROOT, 'templates')
+        join(BASE_DIR, 'templates')
     ]
 
     FIXTURE_DIRS = [
-        join(PROJECT_ROOT, 'fixtures')
+        join(BASE_DIR, 'fixtures')
     ]
 
     LOGGING = {
@@ -174,7 +174,7 @@ class Deployed(RedisCache, Common):
     # ever turned on when run with a WSGI server
     DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
-    PUBLIC_ROOT = join(PROJECT_ROOT, '../public/')
+    PUBLIC_ROOT = join(BASE_DIR, '../public/')
     STATIC_ROOT = join(PUBLIC_ROOT, 'static')
     MEDIA_ROOT = join(PUBLIC_ROOT, 'media')
     COMPRESS_OUTPUT_DIR = ''
