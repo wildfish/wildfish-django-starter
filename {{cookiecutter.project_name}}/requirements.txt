@@ -12,7 +12,7 @@ django-debug-toolbar
 django-model-utils
 django-redis-cache
 hiredis
-django-floppyforms
+django-bootstrap3
 django-vanilla-views
 django-extensions
 django-clear-cache

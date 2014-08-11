@@ -43,7 +43,7 @@ class Common(Configuration):
         'django.contrib.staticfiles',
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
-        'floppyforms',
+        'bootstrap3',
         'django_extensions',
         'clear_cache',
         '{{cookiecutter.project_name}}.{{cookiecutter.app_name}}',
