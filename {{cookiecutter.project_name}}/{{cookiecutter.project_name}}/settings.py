@@ -46,6 +46,7 @@ class Common(Configuration):
         'floppyforms',
         'django_extensions',
         'clear_cache',
+        '{{cookiecutter.project_name}}.{{cookiecutter.app_name}}',
     ]
 
     MIDDLEWARE_CLASSES = [
@@ -225,3 +226,4 @@ class Prod(Deployed):
     RAVEN_CONFIG = {
         'dsn': '{{cookiecutter.sentry_dsn}}'
     }
+

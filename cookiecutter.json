@@ -7,5 +7,7 @@
     "time_zone": "Europe/London",
     "email_user": "",
     "email_password": "",
-    "sentry_dsn": ""
+    "sentry_dsn": "",
+    "app_name": "things",
+    "model_name": "Thing"
 }
