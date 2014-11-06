@@ -152,12 +152,6 @@ class Common(Configuration):
         },
     }
 
-    # App settings
-
-    # django-debug-toolbar
-    DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
-    INTERNAL_IPS = ('127.0.0.1',)
-
 
 class Dev(Common):
     DEBUG = True
