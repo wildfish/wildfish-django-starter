@@ -11,7 +11,7 @@ Features
 * Settings using django-configurations
 * Testing bits: django-webtest, model-mommy
 * Redis cache (via django-redis-cache)
-* Senty's raven client, django-debug-toolbar
+* Sentry's raven client, django-debug-toolbar
 * django-bootstrap3, django-model-utils
 * Django CRUD views and templates using django-vanilla-views.
 * A Django ModelForm using bootstrap3.
