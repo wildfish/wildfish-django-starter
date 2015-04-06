@@ -1,3 +1,3 @@
 cd `dirname $0`/..
-rm dev.sqlite
+rm db.sqlite3
 python manage.py syncdb --noinput

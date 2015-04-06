@@ -70,7 +70,7 @@ class Common(Configuration):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'dev.sqlite',
+            'NAME': 'db.sqlite3',
         }
     }
 
