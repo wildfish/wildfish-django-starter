@@ -220,4 +220,3 @@ class Prod(Deployed):
     RAVEN_CONFIG = {
         'dsn': '{{cookiecutter.sentry_dsn}}'
     }
-

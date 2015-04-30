@@ -28,4 +28,3 @@ class {{ cookiecutter.model_name }}Update(UpdateView):
 class {{ cookiecutter.model_name }}Delete(DeleteView):
     model = {{ cookiecutter.model_name }}
     success_url = reverse_lazy('{{ cookiecutter.model_name|lower }}_list')
-

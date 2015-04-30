@@ -10,4 +10,3 @@ urlpatterns = patterns(
     url(r'^(?P<pk>\d+)/update/$', {{ cookiecutter.model_name }}Update.as_view(), name='{{ cookiecutter.model_name|lower }}_update'),
     url(r'^(?P<pk>\d+)/delete/$', {{ cookiecutter.model_name }}Delete.as_view(), name='{{ cookiecutter.model_name|lower }}_delete'),
 )
-
