@@ -1,0 +1,4 @@
+cookiecutter==1.0.0
+flake8==2.4.0
+pytest==2.7.0
+sh==1.11
