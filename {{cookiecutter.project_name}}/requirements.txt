@@ -3,7 +3,7 @@ ipdb
 flake8
 Django
 psycopg2
-django-configurations
+https://github.com/jezdez/django-configurations/archive/master.tar.gz
 raven
 WebTest
 django-webtest
