@@ -16,3 +16,6 @@ django-bootstrap3
 django-vanilla-views
 django-extensions
 django-clear-cache
+django-haystack
+elasticsearch
+https://github.com/kezabelle/django-haystackbrowser/archive/master.tar.gz

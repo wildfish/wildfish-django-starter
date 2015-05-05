@@ -53,7 +53,10 @@ class Common(Configuration):
         'bootstrap3',
         'django_extensions',
         'clear_cache',
+        'haystack',
+        'haystackbrowser',
         '{{cookiecutter.project_name}}.{{cookiecutter.app_name}}',
+        '{{cookiecutter.project_name}}.search',
     ]
 
     MIDDLEWARE_CLASSES = [
@@ -158,6 +161,19 @@ class Common(Configuration):
             },
         },
     }
+
+    index_name = PROJECT_ENVIRONMENT_SLUG + '_haystack'
+    if IN_TESTS:
+        index_name += '_test'
+
+    HAYSTACK_CONNECTIONS = {
+        'default': {
+            'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+            'URL': 'http://127.0.0.1:9200/',
+            'INDEX_NAME': index_name,
+        },
+    }
+    HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 
 class Dev(Common):
