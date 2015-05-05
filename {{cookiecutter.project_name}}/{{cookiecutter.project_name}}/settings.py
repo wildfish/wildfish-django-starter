@@ -1,8 +1,14 @@
+from os import environ
 from os.path import dirname, join
+from sys import argv
 from configurations import Configuration
 
 BASE_DIR = dirname(dirname(__file__))
 PROJECT_NAME = '{{cookiecutter.project_name}}'
+PROJECT_ENVIRONMENT_SLUG = '{}_{}'.format(PROJECT_NAME, environ.get('DJANGO_CONFIGURATION').lower())
+
+# Detect if we are running tests.  Is this really the best way?
+IN_TESTS = 'test' in argv
 
 
 class RedisCache(object):
@@ -10,6 +16,7 @@ class RedisCache(object):
         'default': {
             'BACKEND': 'redis_cache.RedisCache',
             'LOCATION': '127.0.0.1:6379',
+            'KEY_PREFIX': '{}_'.format(PROJECT_ENVIRONMENT_SLUG),
             'OPTIONS': {
                 'DB': 1,
                 'PARSER_CLASS': 'redis.connection.HiredisParser'
