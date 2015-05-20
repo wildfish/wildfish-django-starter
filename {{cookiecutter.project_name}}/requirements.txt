@@ -16,3 +16,5 @@ django-bootstrap3
 django-vanilla-views
 django-extensions
 django-clear-cache
+pyreact
+django-pipline

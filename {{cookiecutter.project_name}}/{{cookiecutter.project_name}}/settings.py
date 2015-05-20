@@ -1,5 +1,6 @@
 from os.path import dirname, join
 from configurations import Configuration
+from django.conf import global_settings
 
 BASE_DIR = dirname(dirname(__file__))
 PROJECT_NAME = '{{cookiecutter.project_name}}'
@@ -46,6 +47,7 @@ class Common(Configuration):
         'bootstrap3',
         'django_extensions',
         'clear_cache',
+        'pipeline',
         '{{cookiecutter.project_name}}.{{cookiecutter.app_name}}',
     ]
 
@@ -150,6 +152,23 @@ class Common(Configuration):
                 'propagate': False,
             },
         },
+    }
+
+    STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+    STATICFILES_FINDERS = global_settings.STATICFILES_FINDERS + ('pipeline.finders.PipelineFinder',)
+
+    PIPELINE_COMPILERS = (
+        'react.utils.pipeline.JSXCompiler',
+    )
+
+    PIPELINE_JS = {
+        '{{cookiecutter.model_name|lower}}': {
+            'source_filenames': [
+                'js/{{cookiecutter.model_name|lower}}_grid.jsx',
+            ],
+            'output_filename': 'js/{{cookiecutter.model_name|lower}}.js'
+        }
     }
 
 
