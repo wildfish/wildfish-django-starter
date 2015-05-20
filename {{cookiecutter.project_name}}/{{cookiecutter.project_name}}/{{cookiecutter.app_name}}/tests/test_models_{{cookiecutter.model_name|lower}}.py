@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 from django_webtest import WebTest
 from model_mommy import mommy
-from .models import {{ cookiecutter.model_name }}
+from ..models import {{ cookiecutter.model_name }}
 
 
 class {{ cookiecutter.model_name }}Test(WebTest):

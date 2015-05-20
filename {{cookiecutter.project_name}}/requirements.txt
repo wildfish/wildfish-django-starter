@@ -17,4 +17,6 @@ django-vanilla-views
 django-extensions
 django-clear-cache
 pyreact
-django-pipline
+django-pipeline
+djangorestframework
+django-filter

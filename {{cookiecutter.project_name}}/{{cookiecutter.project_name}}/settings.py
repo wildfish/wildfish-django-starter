@@ -48,6 +48,7 @@ class Common(Configuration):
         'django_extensions',
         'clear_cache',
         'pipeline',
+        'rest_framework',
         '{{cookiecutter.project_name}}.{{cookiecutter.app_name}}',
     ]
 
@@ -169,6 +170,21 @@ class Common(Configuration):
             ],
             'output_filename': 'js/{{cookiecutter.model_name|lower}}.js'
         }
+    }
+
+    REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        ),
+        'DEFAULT_FILTER_BACKENDS': (
+            'rest_framework.filters.DjangoFilterBackend',
+        ),
+        'DEFAULT_RENDERER_CLASSES': (
+            'rest_framework.renderers.JSONRenderer',
+        ),
+        'DEFAULT_PARSER_CLASSES': (
+            'rest_framework.parsers.JSONParser',
+        )
     }
 
 
