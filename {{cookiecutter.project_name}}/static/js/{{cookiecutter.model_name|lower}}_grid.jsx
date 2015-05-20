@@ -3,22 +3,27 @@ var {{cookiecutter.model_name}}Grid = React.createClass({
         return {
             results: [],
             maxPages: 0,
-            externalResultsPerPage: 20,
+            externalResultsPerPage: 5,
             externalSortSortColumn: null,
             externalSortAscending: true,
-            currentPage: 1
+            currentPage: 0
         };
     },
-    componentDidMount: function(){
-        _this = this
-        $.get(this.props.apiUrl).success(function(data) {
+    updateResults: function(){
+        var _this = this;
+        $.get(this.props.apiUrl + '?page=' + (this.state.currentPage + 1) + '&page_size=' + this.state.externalResultsPerPage).success(function(data) {
             _this.setState({
-                results: data
+                results: data.results,
+                maxPages: Math.ceil(data.count / _this.state.externalResultsPerPage)
             });
         });
     },
+    componentDidMount: function(){
+        this.updateResults();
+    },
     //what page is currently viewed
     setPage: function(index){
+        this.setState({currentPage: index}, function(){this.updateResults();});
     },
     //this will handle how the data is sorted
     sortData: function(sort, sortAscending, data){
@@ -31,6 +36,7 @@ var {{cookiecutter.model_name}}Grid = React.createClass({
     },
     //this method handles determining the page size
     setPageSize: function(size){
+        this.setState({externalResultsPerPage: size}, function(){this.updateResults();});
     },
     render: function(){
         return <Griddle
@@ -46,6 +52,7 @@ var {{cookiecutter.model_name}}Grid = React.createClass({
             resultsPerPage={this.state.externalResultsPerPage}
             externalSortColumn={this.state.externalSortColumn}
             externalSortAscending={this.state.externalSortAscending}
+            showSettings={true}
         />
     }
 });

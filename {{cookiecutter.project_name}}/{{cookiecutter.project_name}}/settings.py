@@ -185,7 +185,9 @@ class Common(Configuration):
         'DEFAULT_PARSER_CLASSES': (
             'rest_framework.parsers.JSONParser',
         ),
-        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+        'PAGE_SIZE': 100,
+        'PAGINATE_BY_PARAM': 'page_size',
     }
 
 
