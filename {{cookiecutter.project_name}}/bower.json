@@ -9,6 +9,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.1.1"
+    "bootstrap": "~3.1.1",
+    "react": "~0.13.3",
+    "griddle-react": "GriddleGriddle/Griddle#0.2.0"
   }
 }
