@@ -12,7 +12,10 @@
     {% javascript '{% endraw %}{{cookiecutter.model_name|lower}}{% raw %}' %}
     <script>
         React.render(
-            React.createElement({% endraw %}{{cookiecutter.model_name}}{% raw %}Grid, null),
+            React.createElement(
+                {% endraw %}{{cookiecutter.model_name}}{% raw %}Grid,
+                {apiUrl: "{% url '{% endraw %}{{cookiecutter.app_name}}{% raw %}:api:v1:{% endraw %}{{cookiecutter.model_name|lower}}{% raw %}-list' %}"}
+            ),
             document.getElementById('grid')
         );
     </script>

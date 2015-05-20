@@ -10,13 +10,12 @@ var {{cookiecutter.model_name}}Grid = React.createClass({
         };
     },
     componentDidMount: function(){
-        this.setState({
-            results: [
-                {name: 'first'},
-                {name: 'second'},
-                {name: 'third'}
-            ]
-        })
+        _this = this
+        $.get(this.props.apiUrl).success(function(data) {
+            _this.setState({
+                results: data
+            });
+        });
     },
     //what page is currently viewed
     setPage: function(index){
@@ -47,8 +46,6 @@ var {{cookiecutter.model_name}}Grid = React.createClass({
             resultsPerPage={this.state.externalResultsPerPage}
             externalSortColumn={this.state.externalSortColumn}
             externalSortAscending={this.state.externalSortAscending}
-            showFilter={true}
-            showSettings={true}
         />
     }
 });
