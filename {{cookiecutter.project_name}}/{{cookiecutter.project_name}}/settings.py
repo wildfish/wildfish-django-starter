@@ -198,9 +198,6 @@ class Stage(Deployed):
             'USER': '',
             'PASSWORD': '',
             'HOST': 'localhost',
-            'OPTIONS': {
-                'autocommit': True,  # see https://docs.djangoproject.com/en/dev/ref/databases/#autocommit-mode
-            }
         }
     }
 
@@ -216,9 +213,6 @@ class Prod(Deployed):
             'USER': '',
             'PASSWORD': '',
             'HOST': 'localhost',
-            'OPTIONS': {
-                'autocommit': True,  # see https://docs.djangoproject.com/en/dev/ref/databases/#autocommit-mode
-            }
         }
     }
 
