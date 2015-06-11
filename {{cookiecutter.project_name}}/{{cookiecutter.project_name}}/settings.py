@@ -1,9 +1,9 @@
 from os import environ
-from os.path import dirname, join
+from os.path import abspath, dirname, join
 from sys import argv
 from configurations import Configuration
 
-BASE_DIR = dirname(dirname(__file__))
+BASE_DIR = dirname(dirname(abspath(__file__)))
 PROJECT_NAME = '{{cookiecutter.project_name}}'
 PROJECT_ENVIRONMENT_SLUG = '{}_{}'.format(PROJECT_NAME, environ.get('DJANGO_CONFIGURATION').lower())
 
@@ -38,7 +38,6 @@ class Common(Configuration):
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
-    TEMPLATE_DEBUG = True
     ALLOWED_HOSTS = []
 
     INSTALLED_APPS = [
@@ -61,12 +60,32 @@ class Common(Configuration):
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'django.middleware.security.SecurityMiddleware',
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]
 
     ROOT_URLCONF = '{{cookiecutter.project_name}}.urls'
+
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [
+                join(BASE_DIR, 'templates')
+            ],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]
 
     WSGI_APPLICATION = '{{cookiecutter.project_name}}.wsgi.application'
 
@@ -107,10 +126,6 @@ class Common(Configuration):
     STATICFILES_DIRS = [
         join(BASE_DIR, 'static'),
         join(BASE_DIR, 'bower_components'),
-    ]
-
-    TEMPLATE_DIRS = [
-        join(BASE_DIR, 'templates')
     ]
 
     FIXTURE_DIRS = [
@@ -162,7 +177,6 @@ class Common(Configuration):
 
 class Dev(Common):
     DEBUG = True
-    TEMPLATE_DEBUG = DEBUG
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = '/tmp/app-emails'
 
@@ -204,7 +218,6 @@ class Stage(Deployed):
 
 class Prod(Deployed):
     DEBUG = False
-    TEMPLATE_DEBUG = DEBUG
 
     DATABASES = {
         'default': {
