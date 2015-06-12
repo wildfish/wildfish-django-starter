@@ -113,6 +113,7 @@ class Common(Configuration):
 
     USE_TZ = True
 
+    SITE_URL = 'http://localhost:8000/'
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/{{ docs_version }}/howto/static-files/
 
@@ -205,6 +206,8 @@ class Deployed(RedisCache, Common):
 
 
 class Stage(Deployed):
+    SITE_URL = 'http://stage.{{cookiecutter.domain_name}}'
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -218,6 +221,8 @@ class Stage(Deployed):
 
 class Prod(Deployed):
     DEBUG = False
+
+    SITE_URL = 'http://{{cookiecutter.domain_name}}'
 
     DATABASES = {
         'default': {
