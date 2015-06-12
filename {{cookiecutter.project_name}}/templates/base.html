@@ -38,6 +38,13 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="{% url '{% endraw %}{{ cookiecutter.app_name }}{% raw %}:list' %}">List</a></li>
                 <li><a href="{% url '{% endraw %}{{ cookiecutter.app_name }}{% raw %}:create' %}">Create</a></li>
+                {% if not user.is_authenticated %}
+                <li><a href="{% url 'account_login' %}?next={{ request.path }}">Sign in</a></li>
+                <li><a href="{% url 'account_signup' %}?next={{ request.path }}">Sign up</a></li>
+                {% else %}
+                <li>{{ user }}</li>
+                <li><a href="{% url 'account_logout' %}?next=/">Sign out</a></li>
+                {% endif %}
               </ul>
             </div><!--/.nav-collapse -->
           </div>
