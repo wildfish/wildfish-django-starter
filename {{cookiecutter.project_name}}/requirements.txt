@@ -16,3 +16,4 @@ django-bootstrap3
 django-vanilla-views
 django-extensions
 django-clear-cache
+django-allauth

@@ -45,13 +45,18 @@ class Common(Configuration):
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
+        'django.contrib.sites',
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
         'bootstrap3',
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
         'django_extensions',
         'clear_cache',
+        '{{cookiecutter.project_name}}.accounts',
         '{{cookiecutter.project_name}}.{{cookiecutter.app_name}}',
     ]
 
@@ -82,6 +87,8 @@ class Common(Configuration):
                     'django.template.context_processors.request',
                     'django.contrib.auth.context_processors.auth',
                     'django.contrib.messages.context_processors.messages',
+                    'allauth.account.context_processors.account',
+                    'allauth.socialaccount.context_processors.socialaccount',
                 ],
             },
         },
@@ -113,7 +120,6 @@ class Common(Configuration):
 
     USE_TZ = True
 
-    SITE_URL = 'http://localhost:8000/'
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/{{ docs_version }}/howto/static-files/
 
@@ -132,6 +138,16 @@ class Common(Configuration):
     FIXTURE_DIRS = [
         join(BASE_DIR, 'fixtures')
     ]
+
+    AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+        'allauth.account.auth_backends.AuthenticationBackend',
+    )
+
+    LOGIN_REDIRECT_URL = '/'
+
+    SITE_ID = 1
+    SITE_URL = 'http://localhost:8000/'
 
     LOGGING = {
         'version': 1,
