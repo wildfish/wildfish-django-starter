@@ -29,3 +29,8 @@ Quickstart
 Ensure you have cookiecutter installed, and then:
 
     cookiecutter git@github.com:wildfish/wildfish-django-starter.git
+
+Then from your generated project:
+
+    bower install
+    python manage.py migrate
