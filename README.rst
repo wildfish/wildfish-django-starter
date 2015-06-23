@@ -32,6 +32,6 @@ Ensure you have cookiecutter installed, and then:
 
 Then from your generated project:
 
-    bower install
+    npm install
     
     python manage.py migrate

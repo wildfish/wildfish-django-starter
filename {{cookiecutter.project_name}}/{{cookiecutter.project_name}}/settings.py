@@ -125,7 +125,7 @@ class Common(Configuration):
     # Additional locations of static files
     STATICFILES_DIRS = [
         join(BASE_DIR, 'static'),
-        join(BASE_DIR, 'bower_components'),
+        join(BASE_DIR, 'node_modules'),
     ]
 
     FIXTURE_DIRS = [
