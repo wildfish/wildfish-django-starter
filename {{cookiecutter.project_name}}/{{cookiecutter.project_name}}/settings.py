@@ -87,8 +87,6 @@ class Common(Configuration):
                     'django.template.context_processors.request',
                     'django.contrib.auth.context_processors.auth',
                     'django.contrib.messages.context_processors.messages',
-                    'allauth.account.context_processors.account',
-                    'allauth.socialaccount.context_processors.socialaccount',
                 ],
             },
         },
