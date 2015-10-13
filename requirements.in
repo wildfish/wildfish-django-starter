@@ -1,5 +1,0 @@
-pip-tools
-cookiecutter
-flake8
-pytest
-sh
