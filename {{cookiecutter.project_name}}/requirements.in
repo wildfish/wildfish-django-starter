@@ -4,7 +4,6 @@ ipdb
 flake8
 Django
 psycopg2
--e git+git://github.com/jezdez/django-configurations#egg=django-configurations
 raven
 WebTest
 django-webtest
@@ -18,3 +17,5 @@ django-vanilla-views
 django-extensions
 django-clear-cache
 uwsgi
+-e git+git://github.com/jezdez/django-configurations#egg=django-configurations
+-e git+git://github.com/pashinin/fabric@p33#egg=fabric
