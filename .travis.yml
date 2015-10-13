@@ -8,6 +8,7 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip-compile {{cookiecutter.project_name}}/requirements.in
   - pip install -r {{cookiecutter.project_name}}/requirements.txt
 
 script:
