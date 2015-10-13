@@ -1,9 +1,10 @@
+pip-tools
 ipython
 ipdb
 flake8
 Django
 psycopg2
-https://github.com/jezdez/django-configurations/archive/master.tar.gz
+-e git+git://github.com/jezdez/django-configurations#egg=django-configurations
 raven
 WebTest
 django-webtest
