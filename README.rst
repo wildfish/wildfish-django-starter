@@ -12,6 +12,7 @@ Features
 
 * 2 tier layout
 * Python essentials: ipython, ipdb, flake8
+* Requirements file managed using pip-tools.
 * Settings using django-configurations
 * Testing bits: django-webtest, model-mommy
 * Redis cache (via django-redis-cache)
@@ -34,4 +35,16 @@ Then from your generated project:
 
     npm install
     
+    pip install -r requirements.in
+    
     python manage.py migrate
+
+
+Requirements using pip-compile
+----------
+
+The generated project uses a requirements.in file to make it straightforward to keep pinned requirements up to date using the ``pip-compile`` command from ``pip-tools``.
+
+To generate a requirements.txt from your project simply use the ``pip-compile`` command.
+
+Read more here, https://github.com/nvie/pip-tools#example-usage-for-pip-compile
