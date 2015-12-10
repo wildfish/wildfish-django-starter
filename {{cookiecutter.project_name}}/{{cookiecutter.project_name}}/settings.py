@@ -56,6 +56,7 @@ class Common(Configuration):
     ]
 
     MIDDLEWARE_CLASSES = [
+        'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
@@ -63,7 +64,6 @@ class Common(Configuration):
         'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'django.middleware.security.SecurityMiddleware',
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]
 
@@ -92,17 +92,32 @@ class Common(Configuration):
     # Database
     # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
     # http://django-configurations.readthedocs.org/en/latest/values/#configurations.values.DatabaseURLValue
-
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'db.sqlite3',
+            'NAME': join(BASE_DIR, 'db.sqlite3'),
         }
     }
 
+    # Password validation
+    # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
+    AUTH_PASSWORD_VALIDATORS = [
+        {
+            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        },
+    ]
+
     # Internationalization
     # https://docs.djangoproject.com/en/{{ docs_version }}/topics/i18n/
-
     LANGUAGE_CODE = 'en-GB'
 
     TIME_ZONE = '{{cookiecutter.time_zone}}'
@@ -115,7 +130,6 @@ class Common(Configuration):
 
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/{{ docs_version }}/howto/static-files/
-
     STATIC_URL = '/static/'
     STATIC_ROOT = join(BASE_DIR, 'static_root')
 

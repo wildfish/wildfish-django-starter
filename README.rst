@@ -37,6 +37,8 @@ Then from your generated project:
     
     pip install -r requirements.in
     
+    python manage.py makemigrations
+
     python manage.py migrate
 
 
