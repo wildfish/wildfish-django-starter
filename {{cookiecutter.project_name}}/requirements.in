@@ -17,5 +17,5 @@ django-vanilla-views
 django-extensions
 django-clear-cache
 uwsgi
--e git+git://github.com/jazzband/django-configurations#egg=django-configurations
+django-configurations
 -e git+git://github.com/pashinin/fabric@p33#egg=fabric
