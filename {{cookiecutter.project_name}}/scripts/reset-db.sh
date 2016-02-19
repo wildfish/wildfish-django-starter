@@ -1,3 +1,3 @@
 cd `dirname $0`/..
-rm db.sqlite3
-python manage.py syncdb --noinput
+python manage.py reset_db --noinput
+python manage.py migrate --noinput
