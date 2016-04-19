@@ -10,7 +10,7 @@ django-webtest
 model-mommy
 django-debug-toolbar
 django-model-utils
-django-redis-cache
+django-redis
 hiredis
 django-bootstrap3
 django-vanilla-views

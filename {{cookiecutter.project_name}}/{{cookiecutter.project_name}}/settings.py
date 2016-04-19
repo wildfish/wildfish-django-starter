@@ -14,15 +14,19 @@ IN_TESTS = 'test' in argv
 class RedisCache(object):
     CACHES = {
         'default': {
-            'BACKEND': 'redis_cache.RedisCache',
-            'LOCATION': '127.0.0.1:6379',
+            'BACKEND': 'django_redis.cache.RedisCache',
+            'LOCATION': 'redis://127.0.0.1:6379/1',
             'KEY_PREFIX': '{}_'.format(PROJECT_ENVIRONMENT_SLUG),
             'OPTIONS': {
-                'DB': 1,
-                'PARSER_CLASS': 'redis.connection.HiredisParser'
-            },
-        },
+                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+                'PARSER_CLASS': 'redis.connection.HiredisParser',
+                # You may want this. See https://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
+                # 'IGNORE_EXCEPTIONS': True, # see
+            }
+        }
     }
+    SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+    SESSION_CACHE_ALIAS = 'default'
 
 
 class Common(Configuration):
