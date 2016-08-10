@@ -27,7 +27,11 @@ Features
 Quickstart
 ----------
 
-Ensure you have cookiecutter installed, and then:
+Ensure you have cookiecutter installed:
+
+    pip install cookiecutter
+
+Then use cookiecutter to generate your project from this template with:
 
     cookiecutter git@github.com:wildfish/wildfish-django-starter.git
 
