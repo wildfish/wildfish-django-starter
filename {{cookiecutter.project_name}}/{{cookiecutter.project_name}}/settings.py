@@ -59,7 +59,7 @@ class Common(Configuration):
         '{{cookiecutter.project_name}}.{{cookiecutter.app_name}}',
     ]
 
-    MIDDLEWARE_CLASSES = [
+    MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
