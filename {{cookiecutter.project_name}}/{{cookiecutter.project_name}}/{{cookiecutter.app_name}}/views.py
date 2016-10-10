@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from vanilla import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .forms import {{ cookiecutter.model_name }}Form
 from .models import {{ cookiecutter.model_name }}

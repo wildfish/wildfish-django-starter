@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django_webtest import WebTest
 from model_mommy import mommy
 from .models import {{ cookiecutter.model_name }}
