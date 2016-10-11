@@ -5,7 +5,7 @@ Wildfish Django Starter
     :alt: Build Status
     :target: https://travis-ci.org/wildfish/wildfish-django-starter
     
-A Django 1.9 friendly project cookiecutter template to kick start development for new projects.  Includes apps and settings we use in the majority of projects, along with an integrated version of our other cookiecutter-django-crud template which will also generate a model, CRUD views and tests.
+A Django 1.10 friendly project cookiecutter template to kick start development for new projects.  Includes apps and settings we use in the majority of projects, along with an integrated version of our other cookiecutter-django-crud template which will also generate a model, CRUD views and tests.
 
 Features
 ----------
@@ -40,8 +40,6 @@ Then from your generated project:
     npm install
     
     pip install -r requirements.in
-    
-    python manage.py makemigrations
 
     python manage.py migrate
 

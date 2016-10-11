@@ -59,13 +59,12 @@ class Common(Configuration):
         '{{cookiecutter.project_name}}.{{cookiecutter.app_name}}',
     ]
 
-    MIDDLEWARE_CLASSES = [
+    MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
-        'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -104,19 +103,10 @@ class Common(Configuration):
     }
 
     # Password validation
-    # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
+    # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
     AUTH_PASSWORD_VALIDATORS = [
         {
-            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-        },
-        {
             'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        },
-        {
-            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-        },
-        {
-            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
         },
     ]
 
@@ -161,6 +151,10 @@ class Common(Configuration):
             'verbose': {
                 'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
             },
+            'django.server': {
+                '()': 'django.utils.log.ServerFormatter',
+                'format': '[%(server_time)s] %(message)s',
+            }
         },
         'handlers': {
             'sentry': {
@@ -171,7 +165,12 @@ class Common(Configuration):
                 'level': 'DEBUG',
                 'class': 'logging.StreamHandler',
                 'formatter': 'verbose'
-            }
+            },
+            'django.server': {
+                'level': 'INFO',
+                'class': 'logging.StreamHandler',
+                'formatter': 'django.server',
+            },
         },
         'loggers': {
             'django.db.backends': {
@@ -187,6 +186,11 @@ class Common(Configuration):
             'sentry.errors': {
                 'level': 'DEBUG',
                 'handlers': ['console'],
+                'propagate': False,
+            },
+            'django.server': {
+                'handlers': ['django.server'],
+                'level': 'INFO',
                 'propagate': False,
             },
         },

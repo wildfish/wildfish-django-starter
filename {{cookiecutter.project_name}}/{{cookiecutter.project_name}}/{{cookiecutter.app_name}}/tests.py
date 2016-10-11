@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django_webtest import WebTest
 from model_mommy import mommy
 from .models import {{ cookiecutter.model_name }}
@@ -31,7 +31,7 @@ class {{ cookiecutter.model_name }}Test(WebTest):
         # check that we don't already have a model with this name
         self.assertFalse({{ cookiecutter.model_name }}.objects.filter(name=new_name).exists())
 
-        form = response.forms['{{ cookiecutter.model_name|lower }}_form']
+        form = response.forms['{{ cookiecutter.model_name_lower }}_form']
         form['name'] = new_name
         form.submit().follow()
 
@@ -53,7 +53,7 @@ class {{ cookiecutter.model_name }}Test(WebTest):
         instance = mommy.make({{ cookiecutter.model_name }})
         response = self.app.get(reverse('{{ cookiecutter.app_name }}:update', kwargs={'pk': instance.pk, }))
 
-        form = response.forms['{{ cookiecutter.model_name|lower }}_form']
+        form = response.forms['{{ cookiecutter.model_name_lower }}_form']
         new_name = 'Some new thing'
         form['name'] = new_name
         form.submit().follow()
