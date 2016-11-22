@@ -50,6 +50,7 @@ class Common(Configuration):
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
+        'whitenoise.runserver_nostatic',
         'django.contrib.staticfiles',
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
@@ -61,6 +62,7 @@ class Common(Configuration):
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
+        'whitenoise.middleware.WhiteNoiseMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
@@ -135,6 +137,8 @@ class Common(Configuration):
         join(BASE_DIR, 'static'),
         join(BASE_DIR, 'node_modules'),
     ]
+
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     FIXTURE_DIRS = [
         join(BASE_DIR, 'fixtures')
