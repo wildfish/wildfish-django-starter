@@ -1,7 +1,8 @@
-from os import environ
+from os import environ, getenv
 from os.path import abspath, dirname, join
 from sys import argv
 from configurations import Configuration
+
 
 BASE_DIR = dirname(dirname(abspath(__file__)))
 PROJECT_NAME = '{{cookiecutter.project_name}}'
@@ -15,7 +16,7 @@ class RedisCache(object):
     CACHES = {
         'default': {
             'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': 'redis://127.0.0.1:6379/1',
+            'LOCATION': 'redis://{}:{}/1'.format(getenv('REDIS_SERVICE_HOST', '127.0.0.1'), getenv('REDIS_SERVICE_PORT', 6379)),
             'KEY_PREFIX': '{}_'.format(PROJECT_ENVIRONMENT_SLUG),
             'OPTIONS': {
                 'CLIENT_CLASS': 'django_redis.client.DefaultClient',
@@ -234,10 +235,10 @@ class Stage(Deployed):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': '',
-            'USER': '',
-            'PASSWORD': '',
-            'HOST': 'localhost',
+            'NAME': getenv('POSTGRES_USER', ''),
+            'USER': getenv('POSTGRES_USER', ''),
+            'PASSWORD': getenv('POSTGRES_PASSWORD', 'password'),
+            'HOST': getenv('POSTGRES_SERVICE_HOST', 'localhost'),
         }
     }
 
@@ -248,10 +249,10 @@ class Prod(Deployed):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': '',
-            'USER': '',
-            'PASSWORD': '',
-            'HOST': 'localhost',
+            'NAME': getenv('POSTGRES_USER', ''),
+            'USER': getenv('POSTGRES_USER', ''),
+            'PASSWORD': getenv('POSTGRES_PASSWORD', 'password'),
+            'HOST': getenv('POSTGRES_SERVICE_HOST', 'localhost'),
         }
     }
 
