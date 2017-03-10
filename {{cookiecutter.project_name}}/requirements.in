@@ -20,4 +20,4 @@ uwsgi
 django-configurations
 -e git+git://github.com/pashinin/fabric@p33#egg=fabric
 whitenoise
-brotlipy
+# brotlipy

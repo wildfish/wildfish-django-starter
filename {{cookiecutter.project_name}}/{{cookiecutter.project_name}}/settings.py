@@ -139,7 +139,7 @@ class Common(Configuration):
         join(BASE_DIR, 'node_modules'),
     ]
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     FIXTURE_DIRS = [
         join(BASE_DIR, 'fixtures')
