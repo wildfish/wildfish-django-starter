@@ -206,6 +206,7 @@ class Dev(Common):
     DEBUG = True
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = '/tmp/app-emails'
+    INTERNAL_IPS = ['127.0.0.1', ]
 
 
 class Deployed(RedisCache, Common):
