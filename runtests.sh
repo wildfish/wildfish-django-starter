@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 py.test
 cookiecutter ./ --no-input
 cd newproject
