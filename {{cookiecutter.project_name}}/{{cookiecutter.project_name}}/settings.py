@@ -96,7 +96,7 @@ class Common(Configuration):
     WSGI_APPLICATION = '{{cookiecutter.project_name}}.wsgi.application'
 
     # Database
-    # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+    # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
     # http://django-configurations.readthedocs.org/en/latest/values/#configurations.values.DatabaseURLValue
     DATABASES = {
         'default': {
@@ -106,7 +106,7 @@ class Common(Configuration):
     }
 
     # Password validation
-    # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
+    # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
     AUTH_PASSWORD_VALIDATORS = [
         {
             'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
@@ -114,7 +114,7 @@ class Common(Configuration):
     ]
 
     # Internationalization
-    # https://docs.djangoproject.com/en/1.10/topics/i18n/
+    # https://docs.djangoproject.com/en/1.11/topics/i18n/
     LANGUAGE_CODE = 'en-GB'
 
     TIME_ZONE = '{{cookiecutter.time_zone}}'
@@ -126,7 +126,7 @@ class Common(Configuration):
     USE_TZ = True
 
     # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/1.10/howto/static-files/
+    # https://docs.djangoproject.com/en/1.11/howto/static-files/
     STATIC_URL = '/static/'
     STATIC_ROOT = join(BASE_DIR, 'static_root')
 
