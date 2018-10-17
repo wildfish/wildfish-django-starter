@@ -257,7 +257,7 @@ class Prod(Deployed):
         }
     }
 
-    ALLOWED_HOSTS = ['.{{cookiecutter.domain_name}}', ]  # add deployment domain here
+    ALLOWED_HOSTS = ['.{{cookiecutter.domain}}', ]  # add deployment domain here
 
     RAVEN_CONFIG = {
         'dsn': '{{cookiecutter.sentry_dsn}}'
