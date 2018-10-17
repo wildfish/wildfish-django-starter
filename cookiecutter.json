@@ -1,6 +1,6 @@
 {
-    "project_title": "New Project",
-    "project_name": "newproject",
+    "project_name": "New Project",
+    "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '_')|replace('.', '_') }}",
     "author_name": "Your name",
     "author_email": "you@somewhere.com",
     "domain_name": "wildfish.com",

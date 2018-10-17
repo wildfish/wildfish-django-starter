@@ -9,7 +9,7 @@ admin.autodiscover()
 
 urlpatterns = [
     path(r'', TemplateView.as_view(template_name='home.html')),
-    path(r'{{cookiecutter.app_name}}/', include('{{cookiecutter.project_name}}.{{cookiecutter.app_name}}.urls', namespace='{{cookiecutter.app_name}}')),
+    path(r'{{cookiecutter.app_name}}/', include('{{cookiecutter.project_slug}}.{{cookiecutter.app_name}}.urls', namespace='{{cookiecutter.app_name}}')),
     path(r'admin/', admin.site.urls),
 ]
 

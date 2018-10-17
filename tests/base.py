@@ -16,8 +16,8 @@ class DjangoCookieTestCase(unittest.TestCase):
 
     def generate_project(self, extra_context=None):
         ctx = {
-            'project_title': 'Some New Project',
-            'project_name': 'thenewtestproject',
+            'project_name': 'Some New Project',
+            'project_slug': 'thenewtestproject',
             'author_name': 'Your name',
             'author_email': 'you@somewhere.com',
             'domain_name': 'wildfish.com',

@@ -5,7 +5,7 @@ from configurations import Configuration
 
 
 BASE_DIR = dirname(dirname(abspath(__file__)))
-PROJECT_NAME = '{{cookiecutter.project_name}}'
+PROJECT_NAME = '{{cookiecutter.project_slug}}'
 PROJECT_ENVIRONMENT_SLUG = '{}_{}'.format(PROJECT_NAME, environ.get('DJANGO_CONFIGURATION').lower())
 
 # Detect if we are running tests.  Is this really the best way?
@@ -58,7 +58,7 @@ class Common(Configuration):
         'bootstrap3',
         'django_extensions',
         'clear_cache',
-        '{{cookiecutter.project_name}}.{{cookiecutter.app_name}}',
+        '{{cookiecutter.project_slug}}.{{cookiecutter.app_name}}',
     ]
 
     MIDDLEWARE = [
@@ -73,7 +73,7 @@ class Common(Configuration):
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]
 
-    ROOT_URLCONF = '{{cookiecutter.project_name}}.urls'
+    ROOT_URLCONF = '{{cookiecutter.project_slug}}.urls'
 
     TEMPLATES = [
         {
@@ -93,7 +93,7 @@ class Common(Configuration):
         },
     ]
 
-    WSGI_APPLICATION = '{{cookiecutter.project_name}}.wsgi.application'
+    WSGI_APPLICATION = '{{cookiecutter.project_slug}}.wsgi.application'
 
     # Database
     # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
