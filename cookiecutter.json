@@ -9,7 +9,6 @@
     "email_user": "",
     "email_password": "",
     "sentry_dsn": "",
-    "app_name": "things",
-    "model_name": "Thing",
-    "model_name_lower": "{{ cookiecutter.model_name|lower }}"
+    "app_name": "app",
+    "model_name": "App"
 }
