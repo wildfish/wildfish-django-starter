@@ -1,5 +1,8 @@
 import os
+import random
 import shutil
+import string
+import sys
 import unittest
 from os.path import exists, dirname, join
 
@@ -15,9 +18,16 @@ class DjangoCookieTestCase(unittest.TestCase):
     destpath = None
 
     def generate_project(self, extra_context=None):
+
+        secret_key = ''.join(
+            random.SystemRandom().choice(
+                string.ascii_uppercase + string.ascii_lowercase + string.digits
+            ) for _ in range(64)
+        )
+
         ctx = {
-            'project_name': 'Some New Project',
-            'project_slug': 'thenewtestproject',
+            'project_name': 'Test Project',
+            'project_slug': 'test_project',
             'author_name': 'Your name',
             'author_email': 'you@somewhere.com',
             'domain_name': 'wildfish.com',
@@ -26,17 +36,20 @@ class DjangoCookieTestCase(unittest.TestCase):
             'email_user': '',
             'email_password': '',
             'sentry_dsn': '',
-            'app_name': 'testthings',
-            'model_name': 'TestThing'
+            'app_name': 'test_app',
+            'model_name': 'TestApp',
+            'secret_key': secret_key,
+            'python_version': '{}.{}'.format(sys.version_info[0], sys.version_info[1])
         }
+
         if extra_context:
             assert isinstance(extra_context, dict)
             ctx.update(extra_context)
 
         self.ctx = ctx
-        self.destpath = join(self.root_dir, self.ctx['project_name'])
+        self.destpath = join(self.root_dir, 'build', self.ctx['project_slug'])
 
-        cookiecutter(template='./', checkout=None, no_input=True, extra_context=ctx)
+        cookiecutter('./', checkout=None, no_input=True, overwrite_if_exists=True, extra_context=ctx)
 
         # Build a list containing absolute paths to the generated files
         paths = [os.path.join(dirpath, file_path)
