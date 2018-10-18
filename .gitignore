@@ -6,4 +6,12 @@ __pycache__/
 *.swp
 *~
 
+# root level dot files
+.*
+!/.gitignore
+!/.travis.yml
+
+# default target directories
+build/
+
 {{cookiecutter.project_name}}/requirements.txt
