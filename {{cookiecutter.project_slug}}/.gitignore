@@ -1,28 +1,12 @@
-# Python bytecode:
+__pycache__/
+build/
+
 *.py[co]
-
-# Packaging files:
 *.egg*
-
-# Editor temp files:
-*.swp
 *~
+*.log
 
-# Sphinx docs:
-build
+.*
+!.gitignore
 
-# SQLite3 database files:
-*.db
-*.sqlite
-
-# Editor files
-.project
-.idea/*
-__MACOSX/*
-.ropeproject
-.coverage
-
-# Other
-.DS_Store
-bower_components/
-static_root/
+ssh-config

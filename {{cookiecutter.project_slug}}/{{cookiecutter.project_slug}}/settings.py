@@ -32,13 +32,13 @@ class RedisCache(object):
 
 class Common(Configuration):
     ADMINS = (
-        ('{{cookiecutter.author_name}}', '{{cookiecutter.author_email}}'),
+        ('{{cookiecutter.django_admin_name}}', '{{cookiecutter.django_admin_email}}'),
     )
 
     MANAGERS = ADMINS
 
     # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = '{{cookiecutter.secret_key}}'
+    SECRET_KEY = {% raw -%}'{{secret_key}}'{%- endraw %}
 
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
@@ -201,13 +201,17 @@ class Common(Configuration):
         },
     }
 
+    CELERY_BROKER_URL = 'redis://localhost:6379/0'
+    CELERY_ACCEPT_CONTENT = ['json']
+    CELERYD_WORKER_HIJACK_ROOT_LOGGER = False
+
 
 class Dev(Common):
     DEBUG = True
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = '/tmp/app-emails'
     INTERNAL_IPS = ['127.0.0.1', ]
-
+    ALLOWED_HOSTS = ['{{cookiecutter.project_slug}}.local', ]
 
 class Deployed(RedisCache, Common):
     """

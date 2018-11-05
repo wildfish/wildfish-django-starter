@@ -3,7 +3,7 @@
 {% block heading %}Detail{% endblock %}
 
 {% block content %}
-    <p>{{ object.name }}</p>
-    <a href="{% url '{% endraw %}{{ cookiecutter.app_name }}{% raw %}:list' %}">List</a>
+    <p>{{object.name}}</p>
+    <a href="{% url '{% endraw %}{{cookiecutter.app_name}}{% raw %}:list' %}">List</a>
 {% endblock %}
 {% endraw %}

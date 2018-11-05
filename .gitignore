@@ -1,17 +1,10 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-
-# Temporary files:
-*.swp
+*.py[co]
+*.egg*
 *~
 
-# root level dot files
 .*
-!/.gitignore
-!/.travis.yml
+!.gitignore
+!.travis.yml
 
-# default target directories
+__pycache__/
 build/
-
-{{cookiecutter.project_name}}/requirements.txt

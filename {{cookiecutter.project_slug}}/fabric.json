@@ -1,0 +1,22 @@
+{
+  "env": "dev",
+  "python_version": "{{cookiecutter.python_version}}",
+  "project_slug": "{{cookiecutter.project_slug}}",
+  "db_name": "{{cookiecutter.project_slug}}",
+  "db_user": "{{cookiecutter.project_slug}}",
+  "db_pass": "{{cookiecutter.project_slug}}",
+  "install_dir": "{{cookiecutter.install_dir}}",
+  "virtualenv_dir": "{{cookiecutter.install_dir}}/venv",
+  "media_dir": "{{cookiecutter.install_dir}}/media",
+  "static_dir": "{{cookiecutter.install_dir}}/static",
+  "log_dir": "{{cookiecutter.install_dir}}/logs",
+  "run_dir": "{{cookiecutter.install_dir}}/run",
+  "django_dir": "{{cookiecutter.install_dir}}/{{cookiecutter.project_slug}}",
+  "template_dir": "{{cookiecutter.install_dir}}/{{cookiecutter.project_slug}}/templates",
+  "requirements_file": "{{cookiecutter.install_dir}}/{{cookiecutter.project_slug}}/requirements.txt",
+  "repository_branch": "",
+  "repository_url": "",
+  "host_user": "{{cookiecutter.host_user}}",
+  "domain": "{{cookiecutter.subdomain}}.{{cookiecutter.domain}}",
+  "use_local_certificate": true
+}

@@ -5,9 +5,9 @@
 {% block content %}
     <p>Are you sure you want to delete?</p>
 
-    <form id="{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_form" method="post" action=".">
+    <form id="{% endraw %}{{cookiecutter.model_name|lower}}{% raw %}_form" method="post" action=".">
     {% csrf_token %}
-    <input type="submit" value="Yes" class="btn btn-primary" /> <a href="{% url '{% endraw %}{{ cookiecutter.app_name }}{% raw %}:list' %}" class="btn btn-danger">No</a>
+    <input type="submit" value="Yes" class="btn btn-primary" /> <a href="{% url '{% endraw %}{{cookiecutter.app_name}}{% raw %}:list' %}" class="btn btn-danger">No</a>
     </form>
 {% endblock %}
 {% endraw %}

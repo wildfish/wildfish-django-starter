@@ -21,3 +21,5 @@ django-configurations
 whitenoise
 # brotlipy
 invoke
+fabric
+celery
