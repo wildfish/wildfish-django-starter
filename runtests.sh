@@ -7,10 +7,10 @@
 set -e
 py.test
 cookiecutter . --no-input --overwrite-if-exists
-cd new_project
+cd project
 npm install
 pip install -r requirements.in
 python manage.py makemigrations
 python manage.py test
 cd ..
-rm -rf new_project
+rm -rf project
