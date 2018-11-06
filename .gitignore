@@ -1,9 +1,10 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-
-# Temporary files:
-*.swp
+*.py[co]
+*.egg*
 *~
 
-{{cookiecutter.project_name}}/requirements.txt
+.*
+!.gitignore
+!.travis.yml
+
+__pycache__/
+build/

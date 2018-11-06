@@ -1,0 +1,12 @@
+__pycache__/
+build/
+
+*.py[co]
+*.egg*
+*~
+*.log
+
+.*
+!.gitignore
+
+ssh-config

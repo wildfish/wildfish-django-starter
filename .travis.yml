@@ -8,7 +8,7 @@ python:
 install:
   - pip install pip -U
   - pip install -r requirements.txt
-  - pip install -r {{cookiecutter.project_name}}/requirements.in
+  - pip install -r {{cookiecutter.project_slug}}/requirements.in
 
 script:
   - ./runtests.sh
