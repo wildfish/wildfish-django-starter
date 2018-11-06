@@ -43,7 +43,6 @@ def full(ctx):
     project.collectstatic(ctx)
     project.migrate(ctx)
     project.permissions(ctx)
-    celery.restart(ctx)
     nginx.restart(ctx)
     supervisor.restart(ctx)
 

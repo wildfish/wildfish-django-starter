@@ -22,7 +22,6 @@ def restart(ctx):
     We assume there may be new or discontinued services so a full
     reload and restart of all services is performed.
     """
-    ctx.sudo('supervisorctl reread')
     ctx.sudo('supervisorctl update')
 
 
