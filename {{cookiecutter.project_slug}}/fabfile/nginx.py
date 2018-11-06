@@ -1,7 +1,6 @@
 from fabric import task
 from invoke import Collection
 
-from fabfile.base import apt_update
 from fabfile.utils import render_template
 
 
@@ -10,8 +9,6 @@ def install(ctx):
     """
     Install nginx.
     """
-    apt_update(ctx)
-
     ctx.sudo('apt-get --yes install nginx')
 
 

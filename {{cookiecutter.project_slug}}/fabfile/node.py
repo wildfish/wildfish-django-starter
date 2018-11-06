@@ -1,16 +1,12 @@
 from fabric import task
 from invoke import Collection
 
-from fabfile.base import apt_update
-
 
 @task()
 def install(ctx):
     """
     Install node package manager.
     """
-    apt_update(ctx)
-
     ctx.sudo('apt-get --yes install npm')
 
 

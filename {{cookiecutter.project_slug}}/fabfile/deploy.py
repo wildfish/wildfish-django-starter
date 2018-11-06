@@ -1,6 +1,7 @@
 from fabric import task
 from invoke import Collection
 
+from fabfile import base
 from fabfile import celery
 from fabfile import git
 from fabfile import nginx
@@ -18,6 +19,8 @@ def full(ctx):
     """
     Install all the system packages.
     """
+    python.add_ppa(ctx)
+    base.apt_update(ctx)
     python.install(ctx)
     postgres.install(ctx)
     postgres.create(ctx)

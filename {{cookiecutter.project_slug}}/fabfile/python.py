@@ -1,8 +1,6 @@
 from fabric import task
 from invoke import Collection
 
-from .base import apt_update
-
 
 def add_ppa(ctx):
     """
@@ -10,16 +8,12 @@ def add_ppa(ctx):
     """
     ctx.sudo('add-apt-repository ppa:deadsnakes/ppa')
 
-    apt_update(ctx)
-
 
 @task()
 def install(ctx):
     """
     Install python and all the packages needed for building and installing dependencies.
     """
-    add_ppa(ctx)
-
     packages = ' '.join([
         'python%s' % ctx.python_version,
         'python%s-dev' % ctx.python_version,

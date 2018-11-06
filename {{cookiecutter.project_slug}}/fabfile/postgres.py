@@ -4,8 +4,6 @@ import os
 from fabric import task
 from invoke import Collection
 
-from .base import apt_update
-
 
 # TODO Add task to drop database
 # TODO Add task to restore database
@@ -16,8 +14,6 @@ def install(ctx):
     """
     Install the database, contrib packages and python driver.
     """
-    apt_update(ctx)
-
     ctx.sudo('apt-get --yes install postgresql postgresql-contrib python-psycopg2')
     ctx.sudo('psql -c "SELECT version();"', user='postgres')
 
