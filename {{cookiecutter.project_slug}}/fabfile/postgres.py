@@ -25,19 +25,25 @@ def install(ctx):
 @task
 def create_user(ctx):
     """
-    Create the database owner.
+    Create the database owner, if it does not exist.
     """
-    cmd = 'psql --command "CREATE ROLE %s WITH ENCRYPTED PASSWORD \'%s\';"' % (ctx.db_user, ctx.db_pass)
-    ctx.sudo(cmd, user='postgres')
+    sql = "SELECT 1 FROM pg_roles WHERE rolname='%s'" % ctx.db_user
+    result = ctx.sudo('psql -tc "%s"' % sql, user='postgres', hide=True)
+    if not result.stdout.strip():
+        cmd = 'psql -c "CREATE ROLE %s WITH ENCRYPTED PASSWORD \'%s\';"' % (ctx.db_user, ctx.db_pass)
+        ctx.sudo(cmd, user='postgres')
 
 
 @task
 def create_db(ctx):
     """
-    Create the database.
+    Create the database, if it does not exist.
     """
-    cmd = 'psql --command "CREATE DATABASE %s WITH OWNER %s;"' % (ctx.db_name, ctx.db_user)
-    ctx.sudo(cmd, user='postgres')
+    sql = "SELECT 1 from pg_database WHERE datname='%s';" % ctx.db_name
+    result = ctx.sudo('psql -tc "%s"' % sql, user='postgres', hide=True)
+    if not result.stdout.strip():
+        cmd = 'psql -c "CREATE DATABASE %s WITH OWNER %s;"' % (ctx.db_name, ctx.db_user)
+        ctx.sudo(cmd, user='postgres')
 
 
 @task
