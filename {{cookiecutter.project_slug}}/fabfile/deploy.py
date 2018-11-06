@@ -50,5 +50,23 @@ def full(ctx):
     supervisor.restart(ctx)
 
 
+@task
+def quick(ctx):
+    """
+    Update the Django application
+    """
+    if ctx.repository_url:
+        project.checkout(ctx)
+    else:
+        project.upload(ctx)
+
+    project.requirements(ctx)
+    project.collectstatic(ctx)
+    project.migrate(ctx)
+    nginx.restart(ctx)
+    supervisor.restart(ctx)
+
+
 ns = Collection('deploy')
 ns.add_task(full)
+ns.add_task(quick)
