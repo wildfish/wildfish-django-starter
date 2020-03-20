@@ -25,6 +25,5 @@ os.environ.setdefault('DJANGO_CONFIGURATION', 'Dev')
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 from configurations.wsgi import get_wsgi_application  # noqa
-from raven.contrib.django.raven_compat.middleware.wsgi import Sentry  # noqa
 
-application = Sentry(get_wsgi_application())
+application = get_wsgi_application()

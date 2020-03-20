@@ -1,6 +1,8 @@
 from os import environ, getenv
 from os.path import abspath, dirname, join
 from sys import argv
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 from configurations import Configuration
 
 
@@ -53,7 +55,6 @@ class Common(Configuration):
         'django.contrib.messages',
         'whitenoise.runserver_nostatic',
         'django.contrib.staticfiles',
-        'raven.contrib.django.raven_compat',
         'debug_toolbar',
         'bootstrap3',
         'django_extensions',
@@ -145,62 +146,6 @@ class Common(Configuration):
         join(BASE_DIR, 'fixtures')
     ]
 
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': True,
-        'root': {
-            'level': 'WARNING',
-            'handlers': ['sentry'],
-        },
-        'formatters': {
-            'verbose': {
-                'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-            },
-            'django.server': {
-                '()': 'django.utils.log.ServerFormatter',
-                'format': '[%(server_time)s] %(message)s',
-            }
-        },
-        'handlers': {
-            'sentry': {
-                'level': 'ERROR',
-                'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
-            },
-            'console': {
-                'level': 'DEBUG',
-                'class': 'logging.StreamHandler',
-                'formatter': 'verbose'
-            },
-            'django.server': {
-                'level': 'INFO',
-                'class': 'logging.StreamHandler',
-                'formatter': 'django.server',
-            },
-        },
-        'loggers': {
-            'django.db.backends': {
-                'level': 'ERROR',
-                'handlers': ['console'],
-                'propagate': False,
-            },
-            'raven': {
-                'level': 'DEBUG',
-                'handlers': ['console'],
-                'propagate': False,
-            },
-            'sentry.errors': {
-                'level': 'DEBUG',
-                'handlers': ['console'],
-                'propagate': False,
-            },
-            'django.server': {
-                'handlers': ['django.server'],
-                'level': 'INFO',
-                'propagate': False,
-            },
-        },
-    }
-
 
 class Dev(Common):
     DEBUG = True
@@ -231,6 +176,13 @@ class Deployed(RedisCache, Common):
     DEFAULT_FROM_EMAIL = ''
     SERVER_EMAIL = ''
 
+    @classmethod
+    def post_setup(cls):
+        super(Deployed, cls).post_setup()
+        sentry_sdk.init(
+            dsn='{{cookiecutter.sentry_dsn}}', integrations=[DjangoIntegration()],
+        )
+
 
 class Stage(Deployed):
     DATABASES = {
@@ -258,7 +210,3 @@ class Prod(Deployed):
     }
 
     ALLOWED_HOSTS = ['.{{cookiecutter.domain_name}}', ]  # add deployment domain here
-
-    RAVEN_CONFIG = {
-        'dsn': '{{cookiecutter.sentry_dsn}}'
-    }

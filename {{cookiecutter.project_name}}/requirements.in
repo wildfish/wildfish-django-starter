@@ -4,7 +4,7 @@ ipdb
 flake8
 Django
 psycopg2
-raven
+sentry-sdk
 WebTest
 django-webtest
 model-mommy
