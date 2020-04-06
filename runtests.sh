@@ -15,4 +15,4 @@ pytest -vv
 
 # Remove test project
 cd ..
-rm -rf newproject
+#rm -rf newproject

@@ -16,6 +16,4 @@ whitenoise
 django-extensions
 django-filter
 django-model-utils
-# below are likely removed in later task
-django-bootstrap3
 django-vanilla-views

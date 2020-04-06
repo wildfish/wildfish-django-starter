@@ -13,7 +13,7 @@ django-debug-toolbar
 django-webtest
 doc8
 flake8
-model-mommy
+model-bakery
 pytest
 pytest-black
 pytest-cov
