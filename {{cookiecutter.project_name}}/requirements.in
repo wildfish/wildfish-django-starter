@@ -1,23 +1,21 @@
-pip-tools
-ipython
-ipdb
-flake8
-Django
-psycopg2
-sentry-sdk
-WebTest
-django-webtest
-model-mommy
-django-debug-toolbar
-django-model-utils
+#
+# Project requirements
+#
+
+# Core Django and deployment
+django
+django-configurations
+django-clear-cache
 django-redis
 hiredis
+psycopg2-binary
+sentry-sdk
+whitenoise
+
+# General Django apps
+django-extensions
+django-filter
+django-model-utils
+# below are likely removed in later task
 django-bootstrap3
 django-vanilla-views
-django-extensions
-django-clear-cache
-uwsgi
-django-configurations
-whitenoise
-# brotlipy
-invoke

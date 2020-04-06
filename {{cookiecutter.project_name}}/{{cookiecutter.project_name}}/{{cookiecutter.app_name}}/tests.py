@@ -1,6 +1,8 @@
 from django.urls import reverse
+
 from django_webtest import WebTest
 from model_mommy import mommy
+
 from .models import {{ cookiecutter.model_name }}
 
 
@@ -17,22 +19,22 @@ class {{ cookiecutter.model_name }}Test(WebTest):
         Test that the list view returns at least our factory created instance.
         """
         instance = mommy.make({{ cookiecutter.model_name }})
-        response = self.app.get(reverse('{{ cookiecutter.app_name }}:list'))
-        object_list = response.context['object_list']
+        response = self.app.get(reverse("{{ cookiecutter.app_name }}:list"))
+        object_list = response.context["object_list"]
         self.assertIn(instance, object_list)
 
     def test_create_view(self):
         """
         Test that we can create an instance via the create view.
         """
-        response = self.app.get(reverse('{{ cookiecutter.app_name }}:create'))
-        new_name = 'A freshly created thing'
+        response = self.app.get(reverse("{{ cookiecutter.app_name }}:create"))
+        new_name = "A freshly created thing"
 
-        # check that we don't already have a model with this name
+        # check that we don"t already have a model with this name
         self.assertFalse({{ cookiecutter.model_name }}.objects.filter(name=new_name).exists())
 
-        form = response.forms['{{ cookiecutter.model_name_lower }}_form']
-        form['name'] = new_name
+        form = response.forms["{{ cookiecutter.model_name_lower }}_form"]
+        form["name"] = new_name
         form.submit().follow()
 
         instance = {{ cookiecutter.model_name }}.objects.get(name=new_name)
@@ -44,18 +46,18 @@ class {{ cookiecutter.model_name }}Test(WebTest):
         """
         instance = mommy.make({{ cookiecutter.model_name }})
         response = self.app.get(instance.get_absolute_url())
-        self.assertEqual(response.context['object'], instance)
+        self.assertEqual(response.context["object"], instance)
 
     def test_update_view(self):
         """
         Test that we can update an instance via the update view.
         """
         instance = mommy.make({{ cookiecutter.model_name }})
-        response = self.app.get(reverse('{{ cookiecutter.app_name }}:update', kwargs={'pk': instance.pk, }))
+        response = self.app.get(reverse("{{ cookiecutter.app_name }}:update", kwargs={"pk": instance.pk}))
 
-        form = response.forms['{{ cookiecutter.model_name_lower }}_form']
-        new_name = 'Some new thing'
-        form['name'] = new_name
+        form = response.forms["{{ cookiecutter.model_name_lower }}_form"]
+        new_name = "Some new thing"
+        form["name"] = new_name
         form.submit().follow()
 
         instance = {{ cookiecutter.model_name }}.objects.get(pk=instance.pk)
@@ -67,6 +69,6 @@ class {{ cookiecutter.model_name }}Test(WebTest):
         """
         instance = mommy.make({{ cookiecutter.model_name }})
         pk = instance.pk
-        response = self.app.get(reverse('{{ cookiecutter.app_name }}:delete', kwargs={'pk': pk, }))
+        response = self.app.get(reverse("{{ cookiecutter.app_name }}:delete", kwargs={"pk": pk}))
         response = response.form.submit().follow()
         self.assertFalse({{ cookiecutter.model_name }}.objects.filter(pk=pk).exists())

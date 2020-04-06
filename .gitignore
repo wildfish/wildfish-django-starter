@@ -6,4 +6,19 @@ __pycache__/
 *.swp
 *~
 
+# cookie cutter
+{{cookiecutter.project_name}}/requirements-dev.txt
 {{cookiecutter.project_name}}/requirements.txt
+{{cookiecutter.project_name}}/static/images/
+
+# Editor files
+.project
+.idea/*
+__MACOSX/*
+.ropeproject
+.coverage*
+
+# Other
+.DS_Store
+htmlcov
+.tox

@@ -1,0 +1,30 @@
+#
+# Development requirements
+#
+-r requirements.in
+
+# Dev tools
+ipython
+ipdb
+pip-tools
+django-debug-toolbar
+
+# Testing
+django-webtest
+doc8
+flake8
+model-mommy
+pytest
+pytest-black
+pytest-cov
+pytest-django
+pytest-isort
+pytest-flake8
+
+# Documentation
+sphinx
+sphinx_rtd_theme
+
+# Deployment
+fabric
+invoke
