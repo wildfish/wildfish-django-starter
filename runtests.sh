@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
 
+if [ -d newproject ]; then rm -Rf newproject; fi
+
 # Test the cookiecutter project
-pytest --cache-clear
+pytest
 
 # Create a project with cookie cutter then apply it's own pytest
 cookiecutter ./ --no-input
@@ -12,7 +14,3 @@ pip-compile requirements-dev.in -o requirements.txt
 pip install -r requirements.txt
 python manage.py makemigrations
 pytest -vv
-
-# Remove test project
-cd ..
-#rm -rf newproject

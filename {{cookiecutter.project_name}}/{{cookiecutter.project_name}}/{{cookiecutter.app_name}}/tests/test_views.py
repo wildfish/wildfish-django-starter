@@ -38,7 +38,7 @@ def test_create_view(django_app):
     # check that we don"t already have a model with this name
     assert not {{ cookiecutter.model_name }}.objects.filter(name=new_name).exists()
 
-    form = response.forms["{{ cookiecutter.model_name }}_form".lower()]
+    form = response.forms["{{ cookiecutter.model_name|lower }}_form"]
     form["name"] = new_name
     form.submit().follow()
 
@@ -62,7 +62,7 @@ def test_update_view(django_app):
     instance = baker.make({{ cookiecutter.model_name }})
     response = django_app.get(reverse("{{ cookiecutter.app_name }}:update", kwargs={"pk": instance.pk}))
     print(response.forms)
-    form = response.forms["{{ cookiecutter.model_name }}_form".lower()]
+    form = response.forms["{{ cookiecutter.model_name|lower }}_form"]
     new_name = "Some new {{ cookiecutter.model_name }}"
     form["name"] = new_name
     form.submit().follow()
