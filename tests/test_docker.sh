@@ -1,9 +1,10 @@
 #!/bin/sh
 set -o errexit
 
+if [ -d newproject ]; then rm -Rf newproject; fi
+
 # install test requirements
 pip install -r requirements.txt
-pip install pip-tools
 
 cookiecutter . --no-input
 cd newproject

@@ -19,7 +19,6 @@ class DjangoCookieTestCase(unittest.TestCase):
             "author_name": "Your name",
             "author_email": "you@somewhere.com",
             "domain_name": "wildfish.com",
-            "secret_key": "Change me to a random string!",
             "time_zone": "Europe/London",
             "email_user": "",
             "email_password": "",

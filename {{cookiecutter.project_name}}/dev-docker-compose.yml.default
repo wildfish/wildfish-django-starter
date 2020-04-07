@@ -6,13 +6,12 @@ version: '3'
 
 services:
   postgres:
-    image: postgres
+    image: postgres:${DOCKER_POSTGRES_VERSION:-latest}
     ports:
       - "5433:5433"
       - "5432:5432"
     volumes:
-      - "../db:/db"
-      - "../backup:/backup"
+      - "${DOCKER_POSTGRES_DATA:-./{{cookiecutter.project_name}}-db}:/db"
       - ".:/project"
     environment:
       POSTGRES_PASSWORD: {{cookiecutter.project_name}}
@@ -20,7 +19,7 @@ services:
       PGDATA: /db
 
   redis:
-    image: redis
+    image: redis:${DOCKER_REDIS_VERSION:-latest}
     ports:
       - "6379:6379"
 
@@ -31,7 +30,6 @@ services:
     environment:
       DJANGO_CONFIGURATION: Dev
       DATABASE_HOST: postgres
-      DJANGO_SECRET_KEY: {{cookiecutter.secret_key}}
       REDIS_SERVICE_HOST: redis
     ports:
       - "8000:8000"
