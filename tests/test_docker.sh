@@ -13,5 +13,6 @@ pip-compile requirements.in -o requirements.txt
 
 # run the tests with this config
 docker-compose -f dev-docker-compose.yml run django pytest -vv
+
 cd ../
 rm -rf newproject

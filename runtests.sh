@@ -11,9 +11,9 @@ cookiecutter ./ --no-input
 cd newproject
 
 # install the requirements, note Django is removed so we trust the tox/travis version
-sed -i '' '1,/django/s/django/'"${TOX_DJANGO_VERSION:-django>=3.0, <3.1}"'/' requirements.in
-pip-compile requirements.in -o requirements.txt
-pip install -r requirements.txt
+sed '1,/django/s/django/'"${TOX_DJANGO_VERSION:-django>=3.0, <3.1}"'/' requirements.in > /tmp/req.in
+pip-compile /tmp/req.in -o /tmp/req.txt
+pip install -r /tmp/req.txt
 
 # migrate then test
 python manage.py makemigrations
