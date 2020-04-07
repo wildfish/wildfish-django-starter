@@ -25,7 +25,3 @@ pytest-mypy
 # Documentation
 sphinx
 sphinx_rtd_theme
-
-# Deployment
-fabric
-invoke
