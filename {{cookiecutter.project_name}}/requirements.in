@@ -17,3 +17,26 @@ django-extensions
 django-filter
 django-model-utils
 django-vanilla-views
+
+# Dev tools
+ipython
+ipdb
+pip-tools
+django-debug-toolbar
+
+# Testing
+django-webtest
+doc8
+flake8
+model-bakery
+pytest
+pytest-black
+pytest-cov
+pytest-django
+pytest-isort
+pytest-flake8
+pytest-mypy
+
+# Documentation
+sphinx
+sphinx_rtd_theme

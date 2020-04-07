@@ -10,7 +10,6 @@ from cookiecutter.main import cookiecutter
 class DjangoCookieTestCase(unittest.TestCase):
 
     root_dir = dirname(dirname(__file__))
-    ctx = {}
     destpath = None
 
     def generate_project(self, extra_context=None):

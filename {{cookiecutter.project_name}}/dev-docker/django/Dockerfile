@@ -11,8 +11,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Full python requirements to support development
-COPY ./requirements-dev.txt /build/requirements-dev.txt
-RUN pip install -r requirements-dev.txt
+COPY ./requirements.txt /build/requirements.txt
+RUN pip-sync requirements.txt
 
 # Run Django
 WORKDIR /project

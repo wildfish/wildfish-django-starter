@@ -20,15 +20,6 @@ class TestCookiecutterSubstitution(DjangoCookieTestCase):
             for line in f:
                 match = re_obj.search(line)
                 self.assertIsNone(
-                    match, "cookiecutter variable not replaced in {}".format(path)
+                    match, f"cookiecutter variable not replaced in {path}"
                 )
             f.close()
-
-    # TODO is this needed if we run pytests again on the created project?
-    # def test_flake8_complaince(self):
-    #     """generated project should pass flake8"""
-    #     self.generate_project()
-    #     try:
-    #         sh.flake8(self.destpath)
-    #     except sh.ErrorReturnCode as e:
-    #         raise AssertionError(e)

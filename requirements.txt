@@ -2,9 +2,11 @@ pip-tools
 cookiecutter
 flake8
 pytest
-pytest-cov
-pytest-flake8
+pytest-black
+pytest-django
 pytest-isort
+pytest-flake8
 pytest-mypy
 sh
 tox
+virtualenv

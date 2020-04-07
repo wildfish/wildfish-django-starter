@@ -8,7 +8,7 @@ pip install pip-tools
 cookiecutter . --no-input
 cd newproject
 cp dev-docker-compose.yml.default dev-docker-compose.yml
-pip-compile requirements-dev.in -o requirements-dev.txt
+pip-compile requirements.in -o requirements.txt
 
 # run the tests with this config
 docker-compose -f dev-docker-compose.yml run django pytest -vv

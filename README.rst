@@ -38,7 +38,8 @@ Then use cookiecutter to generate your project from this template with::
 Then from your generated project::
 
     npm install
-    
+
+    # TODO to be replaces/updated in docs ticket.
     pip install -r requirements.in
 
     python manage.py migrate
