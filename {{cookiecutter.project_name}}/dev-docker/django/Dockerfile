@@ -12,7 +12,7 @@ RUN apt-get update \
 
 # Full python requirements to support development
 COPY ./requirements.txt /build/requirements.txt
-RUN pip-sync requirements.txt
+RUN pip install -r requirements.txt
 
 # Run Django
 WORKDIR /project
