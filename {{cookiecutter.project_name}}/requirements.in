@@ -2,7 +2,7 @@
 # Project requirements
 #
 
-# Core Django and deployment
+# Core
 django
 django-configurations
 django-clear-cache
@@ -12,7 +12,7 @@ psycopg2-binary
 sentry-sdk
 whitenoise
 
-# General Django apps
+# General
 django-extensions
 django-filter
 django-model-utils
