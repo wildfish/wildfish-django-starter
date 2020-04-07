@@ -13,8 +13,8 @@
     <body>
         <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
-            <li><a href="{% url '{% endraw %}{{ cookiecutter.app_name }}{% raw %}:list' %}">List</a></li>
-            <li><a href="{% url '{% endraw %}{{ cookiecutter.app_name }}{% raw %}:create' %}">Create</a></li>
+            <li><a href="{% url '{% endraw %}{{cookiecutter.app_name}}{% raw %}:list' %}">List</a></li>
+            <li><a href="{% url '{% endraw %}{{cookiecutter.app_name}}{% raw %}:create' %}">Create</a></li>
         </ul>
         <div class="container">
             <h1>{% block heading %}{% endblock %}</h1>
