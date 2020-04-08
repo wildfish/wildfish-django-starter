@@ -1,9 +1,13 @@
 services:
   - docker
+  - postgresql
 language: python
 python:
   - "3.6"
   - "3.7"
   - "3.8"
 install: pip install tox-travis
+before_script:
+  - psql -c "CREATE DATABASE newproject;" -U postgres
+  - psql -c "CREATE USER newproject WITH PASSWORD 'newproject';" -U postgres
 script: tox

@@ -7,6 +7,7 @@ django
 django-configurations
 django-clear-cache
 django-redis
+envdir
 hiredis
 psycopg2-binary
 sentry-sdk
