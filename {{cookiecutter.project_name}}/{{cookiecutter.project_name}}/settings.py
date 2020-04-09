@@ -231,16 +231,18 @@ class Common(Configuration):
         "disable_existing_loggers": False,
         "formatters": {
             "verbose": {
-                "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
+                "format": "%(levelname)s %(asctime)s %(module)s "
+                "%(process)d %(thread)d %(message)s"
             },
         },
-        "handlers": {"console": {"class": "logging.StreamHandler",},},
+        "handlers": {"console": {"class": "logging.StreamHandler"}},
         "loggers": {
-            "django": {
+            "django": {"handlers": ["console"], "level": "INFO"},
+            "sentry_sdk": {
+                "level": "ERROR",
                 "handlers": ["console"],
-                "level": "INFO",
+                "propagate": False,
             },
-            "sentry_sdk": {"level": "ERROR", "handlers": ["console"], "propagate": False},
         },
     }
 
