@@ -238,7 +238,7 @@ class Common(Configuration):
         "loggers": {
             "django": {
                 "handlers": ["console"],
-                "level": get_env("DJANGO_LOG_LEVEL", default="INFO"),
+                "level": "INFO",
             },
             "sentry_sdk": {"level": "ERROR", "handlers": ["console"], "propagate": False},
         },
