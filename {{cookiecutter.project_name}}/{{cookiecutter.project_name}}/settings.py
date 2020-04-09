@@ -228,44 +228,19 @@ class Common(Configuration):
 
     LOGGING = {
         "version": 1,
-        "disable_existing_loggers": True,
+        "disable_existing_loggers": False,
         "formatters": {
             "verbose": {
                 "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
             },
-            "django.server": {
-                "()": "django.utils.log.ServerFormatter",
-                "format": "[%(server_time)s] %(message)s",
-            },
         },
-        "handlers": {
-            "console": {
-                "level": "DEBUG",
-                "class": "logging.StreamHandler",
-                "formatter": "verbose",
-            },
-            "django.server": {
-                "level": "INFO",
-                "class": "logging.StreamHandler",
-                "formatter": "django.server",
-            },
-        },
+        "handlers": {"console": {"class": "logging.StreamHandler",},},
         "loggers": {
-            "django.db.backends": {
-                "level": "ERROR",
+            "django": {
                 "handlers": ["console"],
-                "propagate": False,
+                "level": get_env("DJANGO_LOG_LEVEL", default="INFO"),
             },
-            "sentry_sdk": {
-                "level": "ERROR",
-                "handlers": ["console"],
-                "propagate": False,
-            },
-            "django.server": {
-                "handlers": ["django.server"],
-                "level": "INFO",
-                "propagate": False,
-            },
+            "sentry_sdk": {"level": "ERROR", "handlers": ["console"], "propagate": False},
         },
     }
 
