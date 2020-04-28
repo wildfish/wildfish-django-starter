@@ -1,0 +1,44 @@
+# Configuration for local development
+#
+# See README for setup and usage instructions
+#
+version: '3'
+
+services:
+  postgres:
+    image: postgres:${DOCKER_POSTGRES_VERSION:-latest}
+    ports:
+      - "5433:5433"
+      - "5432:5432"
+    volumes:
+      - "${DOCKER_POSTGRES_DATA:-./{{cookiecutter.project_name}}-db}:/db"
+      - ".:/project"
+    environment:
+      POSTGRES_DB: {{cookiecutter.project_name}}
+      POSTGRES_USER: {{cookiecutter.project_name}}
+      POSTGRES_PASSWORD: {{cookiecutter.project_name}}
+      PGDATA: /db
+
+  redis:
+    image: redis:${DOCKER_REDIS_VERSION:-latest}
+    ports:
+      - "6379:6379"
+
+  django:
+    build:
+      context: ./
+      dockerfile: "./dev-docker/django/Dockerfile"
+    environment:
+      DJANGO_CONFIGURATION: DevDocker
+      DATABASE_HOST: postgres
+      DATABASE_NAME: {{cookiecutter.project_name}}
+      DATABASE_USER: {{cookiecutter.project_name}}
+      DATABASE_PASSWORD: {{cookiecutter.project_name}}
+      DJANGO_REDIS_HOST: redis
+    ports:
+      - "8000:8000"
+    volumes:
+      - ".:/project"
+    depends_on:
+      - postgres
+      - redis

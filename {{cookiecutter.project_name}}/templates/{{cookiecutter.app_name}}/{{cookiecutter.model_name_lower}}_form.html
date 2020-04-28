@@ -1,16 +1,12 @@
 {% raw %}{% extends "base.html" %}
 
-{% load bootstrap3 %}
-
 {% block heading %}Create / Update{% endblock %}
 
 {% block content %}
-    <form id="{% endraw %}{{ cookiecutter.model_name_lower }}{% raw %}_form" method="post" action="." class="form">
+    <form id="{% endraw %}{{cookiecutter.model_name_lower}}{% raw %}_form" method="post" action="." class="form">
       {% csrf_token %}
-      {% bootstrap_form form layout='horizontal' %}
-      {% buttons %}
-        <button type="submit" class="btn btn-primary">Submit</button>
-      {% endbuttons %}
+      {{ form }}
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 {% endblock %}
 {% endraw %}

@@ -1,23 +1,43 @@
-pip-tools
+#
+# Project requirements
+#
+
+# Core
+django
+django-configurations
+django-clear-cache
+django-redis
+envdir
+hiredis
+psycopg2-binary
+sentry-sdk
+whitenoise
+
+# General
+django-extensions
+django-filter
+django-model-utils
+django-vanilla-views
+
+# Dev tools
 ipython
 ipdb
-flake8
-Django
-psycopg2
-sentry-sdk
-WebTest
-django-webtest
-model-mommy
+pip-tools
 django-debug-toolbar
-django-model-utils
-django-redis
-hiredis
-django-bootstrap3
-django-vanilla-views
-django-extensions
-django-clear-cache
-uwsgi
-django-configurations
-whitenoise
-# brotlipy
-invoke
+
+# Testing
+django-webtest
+doc8
+flake8
+model-bakery
+pytest
+pytest-black
+pytest-cov
+pytest-django
+pytest-isort
+pytest-flake8
+pytest-mypy
+
+# Documentation
+sphinx
+sphinx_rtd_theme

@@ -5,7 +5,7 @@ Wildfish Django Starter
     :alt: Build Status
     :target: https://travis-ci.org/wildfish/wildfish-django-starter
     
-A Django 2.0 friendly project cookiecutter template to kick start development for new projects.  Includes apps and settings we use in the majority of projects, along with an integrated version of our other cookiecutter-django-crud template which will also generate a model, CRUD views and tests.
+A Django project cookiecutter template to kick start development for new projects.  Includes apps and settings we use in the majority of projects, along with an integrated version of our other cookiecutter-django-crud template which will also generate a model, CRUD views and tests.
 
 Features
 ----------
@@ -14,14 +14,14 @@ Features
 * Python essentials: ipython, ipdb, flake8
 * Requirements file managed using pip-tools.
 * Settings using django-configurations
-* Testing bits: django-webtest, model-mommy
+* Testing bits: django-webtest, model-bakery
 * Redis cache (via django-redis-cache)
 * Sentry client, django-debug-toolbar
-* django-bootstrap3, django-model-utils
+* django-model-utils
 * Django CRUD views and templates using django-vanilla-views.
 * A Django ModelForm using bootstrap3.
 * Tests for all of the views using WebTest.
-* Model Mommy generated models for the tests.
+* Model Bakery generated models for the tests.
 
 
 Quickstart
@@ -38,7 +38,8 @@ Then use cookiecutter to generate your project from this template with::
 Then from your generated project::
 
     npm install
-    
+
+    # TODO to be replaces/updated in docs ticket.
     pip install -r requirements.in
 
     python manage.py migrate
