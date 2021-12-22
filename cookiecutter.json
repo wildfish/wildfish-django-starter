@@ -10,5 +10,6 @@
     "sentry_dsn": "",
     "app_name": "things",
     "model_name": "Thing",
-    "model_name_lower": "{{ cookiecutter.model_name|lower }}"
+    "model_name_lower": "{{ cookiecutter.model_name|lower }}",
+    "django_version":  ["LTS (3.2)", "Latest"]
 }
