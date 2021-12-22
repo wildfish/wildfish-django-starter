@@ -11,7 +11,7 @@ cookiecutter ./ --no-input
 cd newproject
 
 # install the requirements, note Django is removed so we trust the tox/travis version
-sed '1,/django/s/django/'"${TOX_DJANGO_VERSION:-django>=3.0, <3.1}"'/' requirements.in > /tmp/req.in
+sed '1,/django/s/django/'"${TOX_DJANGO_VERSION:-django>=4.0, <4.1}"'/' requirements.in > /tmp/req.in
 pip-compile /tmp/req.in -o /tmp/req.txt
 pip install -r /tmp/req.txt
 
