@@ -10,8 +10,8 @@ pytest -vv
 cookiecutter ./ --no-input
 cd newproject
 
-# install the requirements, note Django is removed so we trust the tox/travis version
-sed '1,/django/s/django/'"${TOX_DJANGO_VERSION:-django>=3.0, <3.1}"'/' requirements.in > /tmp/req.in
+# install the requirements, remove whatever Django is used and force in the tox version.
+sed 's/django>=.*/'"${TOX_DJANGO_VERSION}"'/g' requirements.in > /tmp/req.in
 pip-compile /tmp/req.in -o /tmp/req.txt
 pip install -r /tmp/req.txt
 

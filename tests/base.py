@@ -25,7 +25,9 @@ class DjangoCookieTestCase(unittest.TestCase):
             "sentry_dsn": "",
             "app_name": "testthings",
             "model_name": "TestThing",
+            "django_version": "LTS (3.2)",
         }
+
         if extra_context:
             assert isinstance(extra_context, dict)
             ctx.update(extra_context)

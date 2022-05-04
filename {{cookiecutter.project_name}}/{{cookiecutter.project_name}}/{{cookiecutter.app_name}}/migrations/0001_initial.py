@@ -26,6 +26,8 @@ class Migration(migrations.Migration):
                 ),
                 ("name", models.CharField(max_length=255)),
             ],
-            options={"ordering": ("name", "pk"),},
+            options={
+                "ordering": ("name", "pk"),
+            },
         ),
     ]

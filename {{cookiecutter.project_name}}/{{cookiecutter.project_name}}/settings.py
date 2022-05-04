@@ -344,7 +344,9 @@ class Deployed(RedisCache, Common):
     def post_setup(cls):
         super(Deployed, cls).post_setup()
         sentry_sdk.init(
-            dsn="{{cookiecutter.sentry_dsn}}", integrations=[DjangoIntegration()], environment=CONFIGURATION,
+            dsn="{{cookiecutter.sentry_dsn}}",
+            integrations=[DjangoIntegration()],
+            environment=CONFIGURATION,
         )
 
 
