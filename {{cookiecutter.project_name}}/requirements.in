@@ -3,7 +3,7 @@
 #
 
 # Core
-{% if cookiecutter.django_version == "LTS (3.2)" %}django>=3.2,<4.0{% else %}django=>=4.0,<4.1{% endif %}
+{% if cookiecutter.django_version == "LTS (3.2)" %}django>=3.2,<4.0{% else %}django>=4.1,<4.2{% endif %}
 django-configurations
 django-clear-cache
 django-redis
@@ -27,7 +27,6 @@ django-debug-toolbar
 
 # Testing
 django-webtest
-doc8
 flake8
 model-bakery
 pytest
